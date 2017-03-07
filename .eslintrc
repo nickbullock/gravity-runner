@@ -1,0 +1,148 @@
+---
+parserOptions:
+  ecmaVersion: 6
+  sourceType: module
+env:
+  es6: true
+  node: true
+extends: eslint:recommended
+rules:
+  array-callback-return: warn
+  consistent-return: warn
+  curly: 
+    - error
+    - all
+  default-case: warn
+  dot-location:
+    - error
+    - property
+  eqeqeq:
+    - error
+    - smart
+  guard-for-in: warn
+  no-div-regex: warn
+  no-empty-function: warn
+  no-else-return: warn
+  no-eq-null: error
+  no-eval: error
+  no-extend-native: error
+  no-extra-bind: warn
+  no-extra-label: warn
+  no-fallthrough: warn
+  no-floating-decimal: warn
+  no-implicit-globals: error
+  no-implied-eval: error
+  no-invalid-this: warn
+  no-iterator: warn
+  no-labels: warn
+  no-lone-blocks: warn
+  no-loop-func: error
+  no-magic-numbers: error
+  no-native-reassign: error
+  no-new: warn
+  no-new-func: error
+  no-new-wrappers: error
+  no-param-reassign:
+    - error
+    - props: true
+  no-proto: error
+  no-redeclare: error
+  no-return-assign: error
+  no-self-assign: warn
+  no-self-compare: warn
+  no-throw-literal: warn
+  no-unmodified-loop-condition: warn
+  no-unused-expressions: warn
+  no-useless-call: error
+  no-useless-concat: error
+  no-with: error
+  radix: warn
+  vars-on-top: warn
+  wrap-iife:
+    - warn
+    - inside
+  yoda: warn
+  strict:
+    - error
+    - global
+  no-catch-shadow: warn
+  no-shadow: warn
+  no-shadow-restricted-names: error
+  no-undef-init: warn
+  no-undefined: error
+  no-use-before-define: warn
+  callback-return: error
+  global-require: warn
+  handle-callback-err: error
+  no-mixed-requires:
+    - error
+    - 
+      grouping: true
+      allowCall: true
+  no-new-require: error
+  no-process-env: error
+  no-process-exit: error
+  no-sync: error
+  brace-style: error
+  camelcase: error
+  comma-style:
+    - warn
+    - last
+  consistent-this: error
+  func-names: error
+  func-style:
+    - error
+    - declaration
+    - allowArrowFunctions: true
+  key-spacing: warn
+  lines-around-comment: warn
+  max-depth: error
+  max-len:
+    - error
+    - 120
+    - ignoreUrls: true
+  max-nested-callbacks:
+    - error
+    - 5
+  new-cap: warn
+  new-parens: error
+  newline-after-var: warn
+  newline-before-return: warn
+  newline-per-chained-call: error
+  no-array-constructor: warn
+  no-lonely-if: warn
+  no-nested-ternary: warn
+  no-new-object: error
+  no-unneeded-ternary: error
+  object-property-newline: warn
+  one-var-declaration-per-line:
+    - warn
+    - always
+  operator-linebreak:
+    - warn
+    - before
+  require-jsdoc:
+    - error
+    - require:
+        FunctionDeclaration: true
+        MethodDefinition: true
+        ClassDeclaration: true
+  valid-jsdoc: error
+  no-unsafe-finally: error
+  arrow-body-style: warn
+  no-useless-computed-key: error
+  no-useless-rename: error
+  no-var: error
+  object-shorthand:
+    - warn
+    - always
+  prefer-arrow-callback:
+    - warn
+    - allowNamedFunctions: true
+  prefer-const: error
+  prefer-reflect: warn
+  prefer-rest-params: error
+  prefer-spread: error
+  prefer-template: warn
+  require-yield: error
+  eol-last: error

@@ -1,15 +1,18 @@
 class GameTitle extends Phaser.State {
 
     preload() {
-        this.game.load.spritesheet('logo', 'assets/imgs/BRUS.png', 70, 90);
+        this.game.load.spritesheet('logo', 'assets/imgs/logo.png', 70, 90);
         this.game.load.spritesheet('shadow', 'assets/imgs/shadow.png', 138, 15);
         this.game.load.bitmapFont('desyrel', 'assets/fonts/bitmap/desyrel/desyrel.png', 'assets/fonts/bitmap/desyrel/desyrel.xml');
     }
 
     create() {
+        const LOGO_LETTERS_COUNT = 4;
+        const GAME_START_TIMEOUT = 8000;
+
         this.game.stage.backgroundColor = '#ffffff';
 
-        for (let i = 0; i < 4; i++) {
+        for (let i = 0; i < LOGO_LETTERS_COUNT; i++) {
             const shadow = this.game.add.sprite(this.game.world.centerX - 100 + 69 * i, this.game.world.centerY - 63, 'shadow');
             const letter = this.game.add.sprite(this.game.world.centerX - 100 + 69 * i, -50, 'logo', i);
 
@@ -28,7 +31,7 @@ class GameTitle extends Phaser.State {
 
         this.game.add.tween(text).to( { alpha: 1 }, 2000, Phaser.Easing.Linear.None, true, 3000);
 
-        setTimeout(() => {this.startGame()}, 8000);
+        setTimeout(() => {this.startGame()}, GAME_START_TIMEOUT);
     }
 
     startGame() {

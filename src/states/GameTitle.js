@@ -1,14 +1,8 @@
 class GameTitle extends Phaser.State {
 
-    preload() {
-        this.game.load.spritesheet('logo', 'assets/imgs/logo.png', 70, 90);
-        this.game.load.spritesheet('shadow', 'assets/imgs/shadow.png', 138, 15);
-        this.game.load.bitmapFont('desyrel', 'assets/fonts/bitmap/desyrel/desyrel.png', 'assets/fonts/bitmap/desyrel/desyrel.xml');
-    }
-
     create() {
         const LOGO_LETTERS_COUNT = 4;
-        const GAME_START_TIMEOUT = 8000;
+        const MAIN_STATE_START_TIMEOUT = 8000;
 
         this.game.stage.backgroundColor = '#ffffff';
 
@@ -29,9 +23,9 @@ class GameTitle extends Phaser.State {
         text.alpha = 0;
         text.rotation = -0.3;
 
-        this.game.add.tween(text).to( { alpha: 1 }, 2000, Phaser.Easing.Linear.None, true, 3000);
+        this.game.add.tween(text).to({alpha: 1}, 2000, Phaser.Easing.Linear.None, true, 3000);
 
-        setTimeout(() => {this.startGame()}, GAME_START_TIMEOUT);
+        setTimeout(() => {this.startGame()}, MAIN_STATE_START_TIMEOUT);
     }
 
     startGame() {

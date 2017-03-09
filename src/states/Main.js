@@ -45,7 +45,7 @@ class Main extends Phaser.State {
 
         player.body.bounce.y = 0.2;
         player.body.collideWorldBounds = true;
-        // player.body.setSize(20, 32, 5, 16);
+        player.body.setSize(100, 125, 0, 0);
 
         player.scale.setTo(1, 1);
         player.animations.add(
@@ -65,13 +65,18 @@ class Main extends Phaser.State {
             false);
 
         player.animations.play('runing');
-        player.body.velocity.x = 150;
+        player.body.velocity.x = 250;
 
         game.camera.follow(player);
 
         //  controls
         cursors = game.input.keyboard.createCursorKeys();
         jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+
+        jumpButton.onDown.add(function () {
+            this.jump(player)
+
+        }, this);
 
         this.jumpCount = 0;
         this.isPlayerDead = false;
@@ -84,7 +89,7 @@ class Main extends Phaser.State {
         game.physics.arcade.collide(player, layer, function () {
             //  todo: вынести в класс player
             if (!this.isPlayerDead) {
-                player.body.velocity.x = 150;
+                player.body.velocity.x = 250;
 
                 if (player.body.onFloor()) {
                     this.jumpCount = 0;
@@ -100,15 +105,6 @@ class Main extends Phaser.State {
                 }
             }
         }, null, this);
-
-        //  double jump
-        jumpButton.onDown.add(function () {
-
-            if (jumpButton.isDown) {
-                this.jump(player)
-            }
-
-        }, this);
     }
 
     render () {

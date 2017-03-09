@@ -11,6 +11,7 @@ class Preload extends Phaser.State {
         this.game.load.spritesheet('shadow', 'assets/imgs/game-title/shadow.png', 138, 15);
         
         //####### menu ######
+        this.game.load.image('bg', 'assets/imgs/level/BG.png');
         this.game.load.bitmapFont('future', 'assets/fonts/bitmap/future/future.png', 'assets/fonts/bitmap/future/future.fnt');
         this.game.load.audio('click', 'assets/audio/menu/click.ogg');
 

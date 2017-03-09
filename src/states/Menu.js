@@ -1,6 +1,8 @@
 class Menu extends Phaser.State {
 
     create() {
+        this.game.add.tileSprite(0, 0, window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRatio, 'bg');
+
         this.buttons = [
             {
                 name: "play",

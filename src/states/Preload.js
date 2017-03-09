@@ -3,10 +3,20 @@ class Preload extends Phaser.State {
     preload() {
         this.game.stage.backgroundColor = '#ffffff';
         const text = this.game.add.text(this.game.world.centerX, this.game.world.centerY, 'Loading...');
+        text.anchor.setTo(0.5, 0.5);
 
+        //###### game-title #####
+        this.game.load.bitmapFont('desyrel', 'assets/fonts/bitmap/desyrel/desyrel.png', 'assets/fonts/bitmap/desyrel/desyrel.xml');
         this.game.load.spritesheet('logo', 'assets/imgs/game-title/logo.png', 70, 90);
         this.game.load.spritesheet('shadow', 'assets/imgs/game-title/shadow.png', 138, 15);
-        this.game.load.bitmapFont('desyrel', 'assets/fonts/bitmap/desyrel/desyrel.png', 'assets/fonts/bitmap/desyrel/desyrel.xml');
+        
+        //####### menu ######
+        this.game.load.bitmapFont('future', 'assets/fonts/bitmap/future/future.png', 'assets/fonts/bitmap/future/future.fnt');
+        this.game.load.audio('click', 'assets/audio/menu/click.ogg');
+
+        this.game.load.spritesheet('green_button', 'assets/imgs/menu/green_button.png');
+        this.game.load.spritesheet('blue_button', 'assets/imgs/menu/blue_button.png');
+        this.game.load.spritesheet('red_button', 'assets/imgs/menu/red_button.png');
 
         this.game.load.onFileComplete.add(this.showProgress.bind(null, text), this);
         this.game.load.onLoadComplete.add(this.startGame, this);

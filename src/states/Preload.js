@@ -17,7 +17,8 @@ class Preload extends Phaser.State {
         this.game.load.spritesheet('green_button', 'assets/imgs/menu/green_button.png');
         this.game.load.spritesheet('blue_button', 'assets/imgs/menu/blue_button.png');
         this.game.load.spritesheet('red_button', 'assets/imgs/menu/red_button.png');
-
+        
+        //####### main #####
         this.game.load.tilemap('map', '/assets/maps/spring-level1.json', null, Phaser.Tilemap.TILED_JSON);
         this.game.load.image('level-spring', '/assets/imgs/level/level-spring.png');
 

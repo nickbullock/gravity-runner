@@ -11,19 +11,6 @@ let jumpTimer = 0;
  */
 class Main extends Phaser.State {
 
-    preload () {
-        const game = this.game
-
-        game.load.tilemap('map', '/assets/maps/spring-level1.json', null, Phaser.Tilemap.TILED_JSON);
-        game.load.image('level-spring', '/assets/imgs/level/level-spring.png');
-
-        this.game.load.atlas(
-            'player',
-            '/assets/imgs/players/ninja-girl/spritesheet/ninja-girl.png',
-            '/assets/imgs/players/ninja-girl/spritesheet/ninja-girl.json'
-        );
-    }
-
     create () {
         const game = this.game;
 

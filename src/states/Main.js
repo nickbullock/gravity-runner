@@ -1,3 +1,5 @@
+import Map from './../objects/map';
+
 /* global Phaser*/
 
 let cursors;
@@ -21,57 +23,49 @@ class Main extends Phaser.State {
         game.stage.backgroundColor = "#fff";
 
         //  load level
-        const map = game.add.tilemap('map');
+        const map = new Map("myLevel", game);
+        layer = map.layersFull[0];
 
-        map.addTilesetImage('level-spring');
-
-        map.setCollisionBetween(1, 4);
-        map.setCollisionBetween(81, 92);
-        map.setCollisionBetween(169, 176);
-        map.setCollisionBetween(9, 12);
-        map.setCollisionBetween(253, 256);
-
-        layer = map.createLayer('Layer1');
-
-        layer.resizeWorld();
-
-        game.physics.arcade.gravity.y = 250;
+        game.physics.arcade.gravity.y = 200;
 
         //  todo: position first title
         //  todo: player as class object
-        player = game.add.sprite(10, 50, 'player');
+        player = game.add.sprite(map.playerStartPositions.x, map.playerStartPositions.y, 'dude');
 
         game.physics.enable(player, Phaser.Physics.ARCADE);
 
-        player.body.bounce.y = 0.2;
         player.body.collideWorldBounds = true;
-        // player.body.setSize(20, 32, 5, 16);
+        // player.body.setSize(75, 130, 10, 0);
+        player.body.gravity.y = 500;
 
-        player.scale.setTo(1, 1);
-        player.animations.add(
-            'runing',
-            Phaser.Animation.generateFrameNames('Run__00', 1, 9, ".png"),
-            15,
-            true);
-        player.animations.add(
-            'jumping',
-            Phaser.Animation.generateFrameNames('Jump__00', 1, 9, ".png"),
-            5,
-            false);
-        player.animations.add(
-            'dying',
-            Phaser.Animation.generateFrameNames('Dead__00', 1, 9, ".png"),
-            5,
-            false);
+        player.scale.setTo(2, 2);
+        player.animations.add('running', [0,1,2,3,4,5], 12, true);
+        // player.animations.add(
+        //     'running',
+        //     Phaser.Animation.generateFrameNames('Run__00', 1, 9, ".png"),
+        //     15,
+        //     true);
+        // player.animations.add(
+        //     'jumping',
+        //     Phaser.Animation.generateFrameNames('Jump__00', 1, 9, ".png"),
+        //     5,
+        //     false);
+        // player.animations.add(
+        //     'dying',
+        //     Phaser.Animation.generateFrameNames('Dead__00', 1, 9, ".png"),
+        //     5,
+        //     false);
 
-        player.animations.play('runing');
-        player.body.velocity.x = 150;
+        player.animations.play('running');
+        player.body.velocity.x = 250;
 
         game.camera.follow(player);
 
         //  controls
         cursors = game.input.keyboard.createCursorKeys();
         jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+
+        jumpButton.onDown.add(function () {this.jump(player)}, this);
 
         this.jumpCount = 0;
         this.isPlayerDead = false;
@@ -89,26 +83,18 @@ class Main extends Phaser.State {
                 if (player.body.onFloor()) {
                     this.jumpCount = 0;
                     this.isJump = false;
-                    player.animations.play('runing');
+                    player.animations.play('running');
                 }
 
-                if (player.body.blocked.right && !this.isJump) {
-                    this.isPlayerDead = true;
-
-                    player.animations.play('dying', 5, false);
-                    player.body.velocity.x = 0;
-                }
+                // if (player.body.blocked.right && !this.isJump) {
+                //     this.isPlayerDead = true;
+                //
+                //     player.animations.play('dying', 5, false);
+                //     player.body.velocity.x = 0;
+                // }
             }
         }, null, this);
 
-        //  double jump
-        jumpButton.onDown.add(function () {
-
-            if (jumpButton.isDown) {
-                this.jump(player)
-            }
-
-        }, this);
     }
 
     render () {
@@ -124,7 +110,7 @@ class Main extends Phaser.State {
             this.isJump = true;
             player.animations.play('jumping');
 
-            player.body.velocity.y = -250;
+            player.body.velocity.y = -520;
 
             jumpTimer = this.game.time.now + 750;
 

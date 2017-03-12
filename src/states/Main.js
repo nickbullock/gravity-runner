@@ -65,7 +65,8 @@ class Main extends Phaser.State {
         cursors = game.input.keyboard.createCursorKeys();
         jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
-        jumpButton.onDown.add(function () {this.jump(player)}, this);
+        jumpButton.onDown.add(this.jump.bind(this, player), this);
+        game.input.onTap.add(this.jump.bind(this, player), this);
 
         this.jumpCount = 0;
         this.isPlayerDead = false;

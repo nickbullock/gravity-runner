@@ -1,11 +1,18 @@
 import MapConfig from './map-configuration';
 
-class Map {
-    constructor(mapName, game) {
-        const mapConfig = MapConfig[mapName];
 
-        this.map = game.add.tilemap(mapName);
-        this.map.playerStartPositions = mapConfig.playerStartPositions;
+class Map extends Phaser.Tilemap {
+    constructor(game, mapKey) {
+
+        super(game, mapKey);
+
+        const mapConfig = MapConfig[mapKey];
+
+        /**
+         * Забираем в карту из конфигурации
+         * стартовые позиции игрока
+         */
+        this.playerStartPositions = mapConfig.playerStartPositions;
         /**
          * Необходимо хранить ссылки на слои
          * для дальнейшего установления коллизии
@@ -14,24 +21,35 @@ class Map {
          * мы же в this.map.layersFull храним
          * экземпляры TileMapLayer
          */
-        this.map.layersFull = [];
+        this.layersFull = [];
 
+        /**
+         * У карты может быть несколько тайлсетов
+         * добавляем каждый из конфигурации
+         */
         mapConfig.tilesetImages.forEach((tilesetImage) => {
-            this.map.addTilesetImage(tilesetImage);
+            this.addTilesetImage(tilesetImage);
         });
 
+        /**
+         * Задаем коллизии между тайлами
+         */
         mapConfig.collisionsBetween.forEach((collision) => {
-            this.map.setCollisionBetween(collision.start, collision.end);
+            this.setCollisionBetween(collision.start, collision.end);
         });
 
+        /**
+         * У карты может слоев
+         * добавляем каждый из конфигурации
+         */
         mapConfig.layers.forEach((layerName) => {
-            const layer = this.map.createLayer(layerName);
+            const layer = this.createLayer(layerName);
 
             layer.resizeWorld();
-            this.map.layersFull.push(layer);
+            this.layersFull.push(layer);
         });
         
-        return this.map;
+        return this;
     }
 }
 

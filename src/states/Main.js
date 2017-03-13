@@ -1,4 +1,4 @@
-import Map from './../objects/map';
+import Map from './../objects/map/map';
 
 /* global Phaser*/
 
@@ -15,6 +15,8 @@ class Main extends Phaser.State {
 
     create () {
         const game = this.game;
+
+        game.time.advancedTiming = true;
 
         game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -35,7 +37,7 @@ class Main extends Phaser.State {
         game.physics.enable(player, Phaser.Physics.ARCADE);
 
         player.body.collideWorldBounds = true;
-        // player.body.setSize(75, 130, 10, 0);
+        player.body.setSize(25, 50, 25, 0);
         player.body.gravity.y = 500;
 
         player.scale.setTo(2, 2);
@@ -101,9 +103,10 @@ class Main extends Phaser.State {
     render () {
         const game = this.game;
 
-        game.debug.text(game.time.physicsElapsed, 32, 32);
-        game.debug.body(player);
-        game.debug.bodyInfo(player, 16, 24);
+        // game.debug.text(game.time.physicsElapsed, 32, 32);
+        game.debug.text(game.time.fps || '--', 2, 14, "#00ff00");
+        // game.debug.body(player);
+        // game.debug.bodyInfo(player, 16, 24);
     }
 
     jump (player) {

@@ -44,7 +44,7 @@ class Preload extends Phaser.State {
     startGame() {
         const GAME_TITLE_STATE_START_TIMEOUT = 1000;
 
-        setTimeout(() => {this.game.state.start("Main")}, GAME_TITLE_STATE_START_TIMEOUT);
+        setTimeout(() => {this.game.state.start("GameTitle")}, GAME_TITLE_STATE_START_TIMEOUT);
     }
 
 }

@@ -11,7 +11,7 @@ class Menu extends Phaser.State {
                 sprite: "green_button",
                 callback: () => {
                     this.game.sound.play('click');
-                    this.game.state.start("Main");
+                    this.game.state.start("Levels");
                 },
                 label: "Играть"
             },

@@ -15,6 +15,10 @@ let jumpTimer = 0;
  */
 class Main extends Phaser.State {
 
+    init (mapKey) {
+        this.mapKey = mapKey;
+    }
+
     create () {
         const game = this.game;
 
@@ -24,7 +28,7 @@ class Main extends Phaser.State {
         game.physics.arcade.gravity.y = 200;
 
         //  init level and player
-        map = new Map(game, "myLevel");
+        map = new Map(game, this.mapKey);
         player = new Player(game, map.playerStartPositions.x, map.playerStartPositions.y, 'dude');
 
         game.camera.follow(player);

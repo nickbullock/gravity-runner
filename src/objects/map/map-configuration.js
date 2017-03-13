@@ -1,5 +1,6 @@
 export default {
     "map": {
+        "name": "Старый тестовый уровень",
         "playerStartPositions": {
             "x": 10,
             "y": 50
@@ -34,6 +35,7 @@ export default {
         ]
     },
     "myLevel": {
+        "name": "Новый тестовый уровень",
         "playerStartPositions": {
             "x": 0,
             "y": 600

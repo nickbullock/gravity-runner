@@ -9,13 +9,13 @@ class Levels extends Phaser.State {
         for(let mapKey in MapConfig){
             let text = game.add.text(
                 game.world.centerX,
-                game.world.centerY + 100 * counter,
+                game.world.centerY + 80 * counter,
                 MapConfig[mapKey].name,
-                { font: "32px Arial",  fill: this.generateHexColor(), backgroundColor: 'rgba(255,0,0,0.25)' }
+                { font: "32px Arial",  fill: this.generateHexColor(), backgroundColor: '000000' }
             );
 
             text.anchor.setTo(0.5);
-            text.lineSpacing = 20;
+            text.lineSpacing = 10;
             text.inputEnabled = true;
             text.events.onInputDown.add(this.startGame.bind(this, mapKey), this);
             counter++;
@@ -27,7 +27,12 @@ class Levels extends Phaser.State {
     }
 
     startGame(mapKey) {
-        this.game.state.start("Main", true, false, mapKey);
+
+        this.game.state.start("Main",
+            Phaser.Plugin.StateTransition.Out.SlideLeft,
+            Phaser.Plugin.StateTransition.In.SlideLeft,
+            true, false, mapKey
+        );
     }
 
 }

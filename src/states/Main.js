@@ -24,7 +24,7 @@ class Main extends Phaser.State {
 
         game.time.advancedTiming = true;
         game.physics.startSystem(Phaser.Physics.ARCADE);
-        game.stage.backgroundColor = "#fff";
+        game.stage.backgroundColor = "#e3e3e3";
         game.physics.arcade.gravity.y = 200;
 
         //  init level and player

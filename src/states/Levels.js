@@ -21,18 +21,13 @@ class Levels extends Phaser.State {
             counter++;
         }
     }
-
+    
     generateHexColor() {
         return '#' + ((0.5 + 0.5 * Math.random()) * 0xFFFFFF << 0).toString(16);
     }
 
     startGame(mapKey) {
-
-        this.game.state.start("Main",
-            Phaser.Plugin.StateTransition.Out.SlideLeft,
-            Phaser.Plugin.StateTransition.In.SlideLeft,
-            true, false, mapKey
-        );
+        this.game.state.start("Main", null, null, true, false, mapKey);
     }
 
 }

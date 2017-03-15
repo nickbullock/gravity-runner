@@ -43,10 +43,13 @@ class Main extends Phaser.State {
 
     update () {
         const game = this.game;
-
-        map.layersFull.forEach((layer) => {
-            game.physics.arcade.collide(player, layer, player.collisionCallback, null, player);
-        });
+        
+        // maybe bad for perfomance?
+        // map.layersFull.forEach((layer) => {
+        //     game.physics.arcade.collide(player, layer, player.collisionCallback, null, player);
+        // });
+        game.physics.arcade.collide(player, map.layersFull[0], player.collisionCallback, null, player);
+      
     }
 
     render () {

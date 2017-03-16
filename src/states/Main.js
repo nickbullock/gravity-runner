@@ -22,14 +22,19 @@ class Main extends Phaser.State {
     create () {
         const game = this.game;
 
-        // game.time.advancedTiming = true;
+        game.time.advancedTiming = true;
         game.physics.startSystem(Phaser.Physics.ARCADE);
-        game.stage.backgroundColor = "#e3e3e3";
         game.physics.arcade.gravity.y = 200;
 
         //  init level and player
         map = new Map(game, this.mapKey);
+        layer = map.layersFull[0];
         player = new Player(game, map.playerStartPositions.x, map.playerStartPositions.y, 'dude');
+
+        if(this.game.device.cocoonJS){
+            player.scale.setTo(4, 4);
+            player.body.velocity.x = 600;
+        }
 
         game.camera.follow(player);
 
@@ -43,20 +48,15 @@ class Main extends Phaser.State {
 
     update () {
         const game = this.game;
-        
-        // maybe bad for perfomance?
-        // map.layersFull.forEach((layer) => {
-        //     game.physics.arcade.collide(player, layer, player.collisionCallback, null, player);
-        // });
-        game.physics.arcade.collide(player, map.layersFull[0], player.collisionCallback, null, player);
-      
+
+        game.physics.arcade.collide(player, layer, player.collisionCallback, null, player);
     }
 
     render () {
         const game = this.game;
 
         // game.debug.text(game.time.physicsElapsed, 32, 32);
-        // game.debug.text(game.time.fps || '--', 2, 14, "#00ff00");
+        game.debug.text(game.time.fps || '--', 2, 14, "#00ff00");
         // game.debug.body(player);
         // game.debug.bodyInfo(player, 16, 24);
     }

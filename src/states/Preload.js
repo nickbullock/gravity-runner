@@ -42,9 +42,10 @@ class Preload extends Phaser.State {
     }
 
     startGame() {
-        const GAME_TITLE_STATE_START_TIMEOUT = 1000;
-
-        this.game.state.start("GameTitle",  Phaser.Plugin.StateTransition.Out.ScaleUp)
+        this.game.state.start("GameTitle",
+            Phaser.Plugin.StateTransition.Out.SlideLeft,
+            Phaser.Plugin.StateTransition.In.SlideLeft
+        )
     }
 
 }

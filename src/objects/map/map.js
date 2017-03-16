@@ -45,6 +45,12 @@ class Map extends Phaser.Tilemap {
         mapConfig.layers.forEach((layerName) => {
             const layer = this.createLayer(layerName);
 
+            if(this.game.device.cocoonJS){
+                //TODO check perfomance on mobile
+                layer.smoothed = false;
+                layer.setScale(1.8);
+            }
+
             layer.resizeWorld();
             this.layersFull.push(layer);
         });

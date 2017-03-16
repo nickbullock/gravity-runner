@@ -9,7 +9,7 @@ class Levels extends Phaser.State {
         for(let mapKey in MapConfig){
             let text = game.add.text(
                 game.world.centerX,
-                game.world.centerY + 80 * counter,
+                game.world.centerY + (80 * counter) - 200,
                 MapConfig[mapKey].name,
                 { font: "32px Arial",  fill: this.generateHexColor(), backgroundColor: '000000' }
             );
@@ -27,7 +27,10 @@ class Levels extends Phaser.State {
     }
 
     startGame(mapKey) {
-        this.game.state.start("Main", null, null, true, false, mapKey);
+        this.game.state.start("Main",
+            Phaser.Plugin.StateTransition.Out.SlideLeft,
+            Phaser.Plugin.StateTransition.In.SlideLeft,
+            true, false, mapKey);
     }
 
 }

@@ -41,7 +41,7 @@ class Menu extends Phaser.State {
 
         this.buttons.forEach((button) => {
             let newButton = this[button.name] =  this.game.add.button(button.x, button.y, button.sprite, button.callback, this);
-            let newButtonLabel = this[button.name + "Label"] = this.game.add.bitmapText(button.x, button.y, "future", button.label);
+            let newButtonLabel = this[button.name + "Label"] = this.game.add.bitmapText(button.x, button.y - 10, "future", button.label);
 
             newButton.onInputOver.add(this.overCallback.bind(null, this.game, newButton, newButtonLabel));
             newButton.onInputOut.add(this.outCallback.bind(null, this.game, newButton, newButtonLabel));

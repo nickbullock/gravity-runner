@@ -2,10 +2,9 @@ class GameTitle extends Phaser.State {
 
     create() {
         const LOGO_LETTERS_COUNT = 4;
-        const MAIN_STATE_START_TIMEOUT = 6500;
-
-        // this.game.stage.backgroundColor = '#ffffff';
-        this.game.stage.backgroundColor = '#e3e3e3';
+        const MAIN_STATE_START_TIMEOUT = 5000;
+        
+        this.game.stage.backgroundColor = '#ffffff';
 
         for (let i = 0; i < LOGO_LETTERS_COUNT; i++) {
             const shadow = this.game.add.sprite(this.game.world.centerX - 100 + 69 * i, this.game.world.centerY - 63, 'shadow');

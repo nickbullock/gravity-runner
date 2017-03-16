@@ -42,8 +42,20 @@ export default {
         },
         "collisionsBetween": [
             {
-                "start": 1,
-                "end": 500
+                "start": 15,
+                "end": 19
+            },
+            {
+                "start": 29,
+                "end": 32
+            },
+            {
+                "start": 43,
+                "end": 45
+            },
+            {
+                "start": 2,
+                "end": 5
             }
         ],
         "layers": [

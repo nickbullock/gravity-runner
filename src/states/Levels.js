@@ -27,10 +27,7 @@ class Levels extends Phaser.State {
     }
 
     startGame(mapKey) {
-        this.game.state.start("Main",
-            Phaser.Plugin.StateTransition.Out.SlideLeft,
-            Phaser.Plugin.StateTransition.In.SlideLeft,
-            true, false, mapKey);
+        this.game.state.start("Main", null, null, true, false, mapKey);
     }
 
 }

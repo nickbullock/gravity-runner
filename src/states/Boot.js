@@ -1,13 +1,16 @@
 class Boot extends Phaser.State {
 
-	preload() {
+    create() {
+        this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+        
+        this.scale.pageAlignHorizontally = true;
 
-	}
-
-	create() {
-		this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-		this.game.state.start("Preload");
-	}
+        Phaser.Plugin.StateTransition.Out.ScaleUp.duration = 1000;
+        Phaser.Plugin.StateTransition.Out.SlideLeft.duration = 1000;
+        Phaser.Plugin.StateTransition.In.SlideLeft.duration = 1000;
+        
+        this.game.state.start("Preload");
+    }
 
 }
 

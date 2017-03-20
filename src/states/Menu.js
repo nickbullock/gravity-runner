@@ -1,7 +1,6 @@
 class Menu extends Phaser.State {
 
     create() {
-        this.game.add.tileSprite(0, 0, window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRatio, 'bg');
 
         this.buttons = [
             {
@@ -11,7 +10,10 @@ class Menu extends Phaser.State {
                 sprite: "green_button",
                 callback: () => {
                     this.game.sound.play('click');
-                    this.game.state.start("Main");
+                    this.game.state.start("Levels",   
+                        Phaser.Plugin.StateTransition.Out.SlideLeft,
+                        Phaser.Plugin.StateTransition.In.SlideLeft
+                    );
                 },
                 label: "Играть"
             },
@@ -39,7 +41,7 @@ class Menu extends Phaser.State {
 
         this.buttons.forEach((button) => {
             let newButton = this[button.name] =  this.game.add.button(button.x, button.y, button.sprite, button.callback, this);
-            let newButtonLabel = this[button.name + "Label"] = this.game.add.bitmapText(0, 0, "future", button.label);
+            let newButtonLabel = this[button.name + "Label"] = this.game.add.bitmapText(button.x, button.y - 10, "future", button.label);
 
             newButton.onInputOver.add(this.overCallback.bind(null, this.game, newButton, newButtonLabel));
             newButton.onInputOut.add(this.outCallback.bind(null, this.game, newButton, newButtonLabel));

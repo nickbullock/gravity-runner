@@ -2,8 +2,8 @@ class GameTitle extends Phaser.State {
 
     create() {
         const LOGO_LETTERS_COUNT = 4;
-        const MAIN_STATE_START_TIMEOUT = 6500;
-
+        const MAIN_STATE_START_TIMEOUT = 5000;
+        
         this.game.stage.backgroundColor = '#ffffff';
 
         for (let i = 0; i < LOGO_LETTERS_COUNT; i++) {
@@ -29,7 +29,10 @@ class GameTitle extends Phaser.State {
     }
 
     startGame() {
-        this.game.state.start("Menu");
+        this.game.state.start("Menu",
+            Phaser.Plugin.StateTransition.Out.SlideLeft,
+            Phaser.Plugin.StateTransition.In.SlideLeft
+        );
     }
 
 }

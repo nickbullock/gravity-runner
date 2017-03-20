@@ -20,14 +20,18 @@ class Preload extends Phaser.State {
         this.game.load.spritesheet('red_button', 'assets/imgs/menu/red_button.png');
         
         //####### main #####
-        this.game.load.tilemap('map', '/assets/maps/spring-level1.json', null, Phaser.Tilemap.TILED_JSON);
-        this.game.load.image('level-spring', '/assets/imgs/level/level-spring.png');
-
+        this.game.load.tilemap('map', 'assets/maps/spring-level1.json', null, Phaser.Tilemap.TILED_JSON);
+        this.game.load.image('level-spring', 'assets/imgs/level/level-spring.png');
         this.game.load.atlas(
             'player',
-            '/assets/imgs/players/ninja-girl/spritesheet/ninja-girl.png',
-            '/assets/imgs/players/ninja-girl/spritesheet/ninja-girl.json'
+            'assets/imgs/players/ninja-girl/spritesheet/ninja-girl.png',
+            'assets/imgs/players/ninja-girl/spritesheet/ninja-girl.json'
         );
+
+        //##### new_sprite #####
+        this.game.load.tilemap('myLevel', 'assets/maps/level1.json', null, Phaser.Tilemap.TILED_JSON);
+        this.game.load.image('grass', 'assets/imgs/level/grass.png');
+        this.game.load.spritesheet('dude', 'assets/imgs/players/business.png', 50, 50);
 
         this.game.load.onFileComplete.add(this.showProgress.bind(null, text), this);
         this.game.load.onLoadComplete.add(this.startGame, this);
@@ -38,9 +42,10 @@ class Preload extends Phaser.State {
     }
 
     startGame() {
-        const GAME_TITLE_STATE_START_TIMEOUT = 1000;
-
-        setTimeout(() => {this.game.state.start("GameTitle")}, GAME_TITLE_STATE_START_TIMEOUT);
+        this.game.state.start("GameTitle",
+            Phaser.Plugin.StateTransition.Out.SlideLeft,
+            Phaser.Plugin.StateTransition.In.SlideLeft
+        )
     }
 
 }

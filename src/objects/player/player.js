@@ -2,11 +2,15 @@ class Player extends Phaser.Sprite {
     constructor(game, x, y, sprite) {
         super(game, x, y, sprite);
 
+        this.gravity = 500;
+        this.velocityJumpY = -500;
+        this.gravityLow = false;
+
         game.physics.enable(this, Phaser.Physics.ARCADE);
 
         this.body.collideWorldBounds = true;
         this.body.setSize(25, 50, 25, 0);
-        this.body.gravity.y = 500;
+        this.body.gravity.y = this.gravity;
         this.scale.setTo(2, 2);
         this.animations.add('running', [0,1,2,3,4,5], 12, true);
         this.animations.play('running');
@@ -40,11 +44,11 @@ class Player extends Phaser.Sprite {
     }
 
     jump() {
-        if (this.body.onFloor() && this.jumpCount === 0) {
+        if (this.checkGround() && this.jumpCount === 0) {
             this.isJump = true;
             this.animations.play('jumping');
 
-            this.body.velocity.y = -520;
+            this.body.velocity.y = this.velocityJumpY;
 
             this.jumpTimer = this.game.time.now + 750;
 
@@ -54,7 +58,22 @@ class Player extends Phaser.Sprite {
                 this.animations.play('jumping');
 
                 this.isJump = true;
-                this.body.velocity.y = -250;
+                // this.body.velocity.y = -250;
+
+                if (this.gravityLow) {
+                    this.anchor.setTo(0.5, 1);
+                    this.scale.y = -2;
+                    this.scale.y = 2;
+                } else {
+                    this.anchor.setTo(0.5, 1);
+                    this.scale.y = 2;
+                    this.scale.y = -2;
+                }
+                this.gravityLow = !this.gravityLow;
+                this.gravity = -this.gravity;
+                this.velocityJumpY = -this.velocityJumpY;
+
+                this.body.gravity.y = this.gravity;
                 this.jumpTimer = this.game.time.now + 750;
                 this.jumpCount++;
             }
@@ -65,7 +84,7 @@ class Player extends Phaser.Sprite {
         if (!this.isPlayerDead) {
             this.body.velocity.x = 150;
 
-            if (this.body.onFloor()) {
+            if (this.checkGround()) {
                 this.jumpCount = 0;
                 this.isJump = false;
                 this.animations.play('running');
@@ -78,6 +97,11 @@ class Player extends Phaser.Sprite {
             //     player.body.velocity.x = 0;
             // }
         }
+    }
+    
+    checkGround () {
+        
+        return this.gravityLow ? this.body.onCeiling() : this.body.onFloor();
     }
 }
 

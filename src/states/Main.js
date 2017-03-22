@@ -49,8 +49,14 @@ class Main extends Phaser.State {
 
         layer.resizeWorld();
 
+        //  object
+        //  start position
+        var objects = map.objects["Object1"].filter(item => item.name === "start_position")[0];
+
+        // const spriteStart = game.cache.getImage('start', true);
+
         // player = new Player(game, map.playerStartPositions.x, map.playerStartPositions.y, 'dude');
-        player = new Player(game, 10, 10, 'dude');
+        player = new Player(game, objects.x, objects.y, 'dude');
 
         if(this.game.device.cocoonJS){
             player.scale.setTo(4, 4);

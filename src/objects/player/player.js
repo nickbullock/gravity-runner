@@ -2,7 +2,7 @@ class Player extends Phaser.Sprite {
     constructor(game, x, y, sprite) {
         super(game, x, y, sprite);
 
-        this.gravity = 500;
+        this.gravity = 1000;
         this.velocityJumpY = -500;
         this.gravityLow = false;
 
@@ -12,9 +12,11 @@ class Player extends Phaser.Sprite {
         this.body.setSize(25, 50, 25, 0);
         this.body.gravity.y = this.gravity;
         this.scale.setTo(2, 2);
+        this.anchor.setTo(0,1);
+
         this.animations.add('running', [0,1,2,3,4,5], 12, true);
         this.animations.play('running');
-        this.body.velocity.x = 250;
+        this.body.velocity.x = 350;
 
         this.jumpCount = 0;
         this.jumpTimer = 0;

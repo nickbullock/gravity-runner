@@ -13,15 +13,19 @@ let jumpTimer = 0;
  * @class Main
  */
 class Main extends Phaser.State {
-
-    init (mapKey) {
-        this.mapKey = mapKey;
+    /**
+     *
+     * @param idLevel - относительный путь от /assets/maps с / без расширения. Поддерживаем пока только
+     * JSON config tiles map
+     */
+    init (idLevel) {
+        this.idLevel = idLevel;
     }
 
     preload () {
         this.game.load.tilemap(
             'myLevel',
-            `/assets/maps/${this.mapKey}.json`,
+            `/assets/maps${this.idLevel}.json`,
             null,
             Phaser.Tilemap.TILED_JSON);
     }

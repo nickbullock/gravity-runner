@@ -9,6 +9,8 @@ import Levels from "../objects/map/levels"
 const NAME_LEVELS = "levels";
 const NAME_LEVEL_ARROW = "level_arrows";
 
+const levels = levelsConfig.levels;
+
 /**
  *
  */
@@ -22,9 +24,10 @@ class LevelsState extends Phaser.State {
         this.thumbRows = levelsConfig["thumbRows"];
         this.thumbSpacing = levelsConfig["thumbSpacing"];
 
-        //  todo: add calculate
-        this.numberPages = 1;
-        this.countLevels = levelsConfig.levels.length;
+        this.countLevels = levels.length;
+        this.countLevelsPerPage = this.thumbRows * this.thumbColumns;
+        this.countPages = Math.ceil(this.countLevels / this.countLevelsPerPage);
+        this.currentPage = 0;
 
         this.levelWidth = this.thumbWidth * this.thumbColumns + this.thumbSpacing * (this.thumbColumns - 1);
         this.levelHeight = this.thumbHeight * this.thumbRows + this.thumbSpacing * (this.thumbRows - 1);
@@ -95,60 +98,114 @@ class LevelsState extends Phaser.State {
         levelThumb.frame = countStars;
         // custom attribute
         levelThumb.levelNumber = index + 1;
+        levelThumb.idLevel = levels[index].file;
 
         // adding the level thumb to the group
         levelThumbsGroup.add(levelThumb);
 
-        // if the level is playable, also write level number
-        if(countStars < Levels.state.CLOSE){
-            const style = {
-                font: "18px Arial",
-                fill: "#ffffff"
-            };
-            const levelText = game.add.text(levelThumb.x + 5,levelThumb.y + 5, index + 1, style);
-
-            levelText.setShadow(2, 2, 'rgba(0,0,0,0.5)', 1);
-
-            levelThumbsGroup.add(levelText);
+        if(countStars < Levels.state.CLOSE) {
+            levelThumbsGroup = this.addNumberLevel(levelThumbsGroup, levelThumb.x, levelThumb.y, index + 1);
         }
 
         return levelThumbsGroup;
     }
 
-    addNumberLevel () {
+    addNumberLevel (levelThumbsGroup, x, y, numberLevel) {
+        const game = this.game;
+        const style = {
+            font: "18px Arial",
+            fill: "#ffffff"
+        };
+        const levelText = game.add.text(x + 5, y + 5, numberLevel, style);
 
+        levelText.setShadow(2, 2, 'rgba(0,0,0,0.5)', 1);
+
+        levelThumbsGroup.add(levelText);
+
+        return levelThumbsGroup;
     }
 
-    handlerSelectLevel () {
+    handlerSelectLevel (button) {
+        const game = this.game;
+        const thumbWidth = this.thumbWidth;
+        const TIME_TWEEN = 100;
+
         // the level is playable, then play the level!!
-        if(button.frame < 4){
-            alert("playing level " + button.levelNumber);
+        if(button.frame < Levels.state.CLOSE){
+            this.startLevel(button.idLevel)
         }
         // else, let's shake the locked levels
         else{
-            var buttonTween = game.add.tween(button)
+            const buttonTween = game.add.tween(button);
+
             buttonTween.to({
-                x: button.x+thumbWidth/15
-            }, 20, Phaser.Easing.Cubic.None);
+                x: button.x + thumbWidth/15
+            }, TIME_TWEEN, Phaser.Easing.Cubic.None);
             buttonTween.to({
-                x: button.x-thumbWidth/15
-            }, 20, Phaser.Easing.Cubic.None);
+                x: button.x - thumbWidth/15
+            }, TIME_TWEEN, Phaser.Easing.Cubic.None);
             buttonTween.to({
-                x: button.x+thumbWidth/15
-            }, 20, Phaser.Easing.Cubic.None);
+                x: button.x + thumbWidth/15
+            }, TIME_TWEEN, Phaser.Easing.Cubic.None);
             buttonTween.to({
-                x: button.x-thumbWidth/15
-            }, 20, Phaser.Easing.Cubic.None);
+                x: button.x - thumbWidth/15
+            }, TIME_TWEEN, Phaser.Easing.Cubic.None);
             buttonTween.to({
                 x: button.x
-            }, 20, Phaser.Easing.Cubic.None);
+            }, TIME_TWEEN, Phaser.Easing.Cubic.None);
             buttonTween.start();
         }
         // this.game.state.start("Main", null, null, true, false, idMap);
     }
 
-    handlerArrowClicked () {
+    startLevel (idLevel) {
+        this.game.state.start("Main",
+            Phaser.Plugin.StateTransition.Out.SlideLeft,
+            Phaser.Plugin.StateTransition.In.SlideLeft,
+            true,
+            false,
+            idLevel
+        );
+    }
 
+    handlerArrowClicked (button) {
+        const game = this.game;
+        const levelThumbsGroup = this.levelThumbsGroup;
+
+        // touching right arrow and still not reached last page
+        if(button.frame === 1 && this.currentPage < this.countPages - 1){
+            this.leftArrow.alpha = 1;
+            this.currentPage++;
+
+            // fade out the button if we reached last page
+            if(this.currentPage === this.countPages-1){
+                button.alpha = 0.3;
+            }
+            // scrolling level pages
+            const buttonsTween = game.add.tween(levelThumbsGroup);
+
+            buttonsTween.to({
+                x: this.currentPage * game.width * -1
+            }, 500, Phaser.Easing.Cubic.None);
+            buttonsTween.start();
+        }
+        // touching left arrow and still not reached first page
+        if(button.frame === 0 && this.currentPage > 0){
+            this.rightArrow.alpha = 1;
+            this.currentPage--;
+
+            // fade out the button if we reached first page
+            if(this.currentPage === 0){
+                button.alpha = 0.3;
+            }
+            // scrolling level pages
+            const buttonsTween = game.add.tween(levelThumbsGroup);
+
+            buttonsTween.to({
+                x: this.currentPage * game.width * -1
+            }, 400, Phaser.Easing.Cubic.None);
+            buttonsTween.start();
+        }
     }
 
     static calculatePositionButtonLevels (

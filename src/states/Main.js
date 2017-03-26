@@ -1,4 +1,3 @@
-import Map from './../objects/map/map';
 import Player from './../objects/player/player';
 
 /* global Phaser*/
@@ -33,10 +32,6 @@ class Main extends Phaser.State {
         game.time.advancedTiming = true;
         game.physics.startSystem(Phaser.Physics.ARCADE);
         game.physics.arcade.gravity.y = 200;
-
-        //  init level and player
-        // map = new Map(game, this.mapKey);
-        // layer = map.layersFull[0];
 
         map = game.add.tilemap("myLevel");
 

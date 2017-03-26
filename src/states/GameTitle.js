@@ -1,3 +1,6 @@
+/* global Phaser */
+"use strict";
+
 class GameTitle extends Phaser.State {
 
     create() {
@@ -25,7 +28,17 @@ class GameTitle extends Phaser.State {
 
         this.game.add.tween(text).to({alpha: 1}, 2000, Phaser.Easing.Linear.None, true, 3000);
 
-        setTimeout(() => {this.startGame()}, MAIN_STATE_START_TIMEOUT);
+        const timerStartMainState = setTimeout(() => {this.startGame()}, MAIN_STATE_START_TIMEOUT);
+
+        const esc = this.game.input.keyboard.addKey(Phaser.Keyboard.ESC);
+
+        esc.onDown.add(() =>  {
+            clearTimeout(timerStartMainState);
+            this.game.state.start(
+                "LevelsState",
+                Phaser.Plugin.StateTransition.Out.SlideLeft,
+                Phaser.Plugin.StateTransition.In.SlideLeft)
+        }, this);
     }
 
     startGame() {

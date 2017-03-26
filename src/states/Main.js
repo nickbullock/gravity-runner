@@ -1,4 +1,3 @@
-import Map from './../objects/map/map';
 import Player from './../objects/player/player';
 
 /* global Phaser*/
@@ -16,15 +15,19 @@ let jumpTimer = 0;
  * @class Main
  */
 class Main extends Phaser.State {
-
-    init (mapKey) {
-        this.mapKey = mapKey;
+    /**
+     *
+     * @param idLevel - относительный путь от /assets/maps с / без расширения. Поддерживаем пока только
+     * JSON config tiles map
+     */
+    init (idLevel) {
+        this.idLevel = idLevel;
     }
 
     preload () {
         this.game.load.tilemap(
             'myLevel',
-            `/assets/maps/${this.mapKey}.json`,
+            `/assets/maps${this.idLevel}.json`,
             null,
             Phaser.Tilemap.TILED_JSON);
     }
@@ -35,10 +38,6 @@ class Main extends Phaser.State {
         game.time.advancedTiming = true;
         game.physics.startSystem(Phaser.Physics.ARCADE);
         game.physics.arcade.gravity.y = 200;
-
-        //  init level and player
-        // map = new Map(game, this.mapKey);
-        // layer = map.layersFull[0];
 
         map = game.add.tilemap("myLevel");
 

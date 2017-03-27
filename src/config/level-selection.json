@@ -1,0 +1,93 @@
+{
+    "thumbRows": 4,
+    "thumbColumns": 5,
+    "thumbWidth": 64,
+    "thumbHeight": 64,
+    "thumbSpacing": 8,
+    "levels": [
+        {
+            "name": "Tutorial",
+            "file": "/level1-gravity-v1"
+        },
+        {
+            "name": "Tutorial",
+            "file": "/level1-gravity-v1"
+        },
+        {
+            "name": "Tutorial",
+            "file": "/level1-gravity-v1"
+        },
+        {
+            "name": "Tutorial",
+            "file": "/level1-gravity-v1"
+        },
+        {
+            "name": "Tutorial",
+            "file": "/level1-gravity-v1"
+        },
+        {
+            "name": "Tutorial",
+            "file": "/level1-gravity-v1"
+        },
+        {
+            "name": "Tutorial",
+            "file": "/level1-gravity-v1"
+        },
+        {
+            "name": "Tutorial",
+            "file": "/level1-gravity-v1"
+        },
+        {
+            "name": "Tutorial",
+            "file": "/level1-gravity-v1"
+        },
+        {
+            "name": "Tutorial",
+            "file": "/level1-gravity-v1"
+        },
+        {
+            "name": "Tutorial",
+            "file": "/level1-gravity-v1"
+        },
+        {
+            "name": "Tutorial",
+            "file": "/level1-gravity-v1"
+        },
+        {
+            "name": "Tutorial",
+            "file": "/level1-gravity-v1"
+        },
+        {
+            "name": "Tutorial",
+            "file": "/level1-gravity-v1"
+        },
+        {
+            "name": "Tutorial",
+            "file": "/level1-gravity-v1"
+        },
+        {
+            "name": "Tutorial",
+            "file": "/level1-gravity-v1"
+        },
+        {
+            "name": "Tutorial",
+            "file": "/level1-gravity-v1"
+        },
+        {
+            "name": "Tutorial",
+            "file": "/level1-gravity-v1"
+        },
+        {
+            "name": "Tutorial",
+            "file": "/level1-gravity-v1"
+        },
+        {
+            "name": "Tutorial",
+            "file": "/level1-gravity-v1"
+        },
+        {
+            "name": "Tutorial",
+            "file": "/level1-gravity-v1"
+        }
+    ]
+}

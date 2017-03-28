@@ -30,7 +30,7 @@ class Preload extends Phaser.State {
 
         //##### new_sprite #####
         // this.game.load.tilemap('myLevel', 'assets/maps/level1.json', null, Phaser.Tilemap.TILED_JSON);
-        this.game.load.image('grass', 'assets/imgs/level/grass.png');
+        this.game.load.image('tileset', 'assets/imgs/level/tileset.png');
         this.game.load.spritesheet('player', 'assets/imgs/players/player_v1.png', 64, 64);
 
         this.game.load.onFileComplete.add(this.showProgress.bind(null, text), this);

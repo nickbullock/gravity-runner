@@ -27,24 +27,24 @@ class Main extends Phaser.State {
     preload () {
         this.game.load.tilemap(
             'myLevel',
-            `/assets/maps${this.idLevel}.json`,
+            `/assets/maps/crashtest.json`,
             null,
             Phaser.Tilemap.TILED_JSON);
     }
 
     create () {
         const game = this.game;
+        this.game.stage.backgroundColor = '#e3e3e3';
 
         game.time.advancedTiming = true;
         game.physics.startSystem(Phaser.Physics.ARCADE);
-        game.physics.arcade.gravity.y = 200;
+        // game.physics.arcade.gravity.y = 200;
 
         map = game.add.tilemap("myLevel");
 
-        map.addTilesetImage('grass');
+        map.addTilesetImage('tileset');
 
-        map.setCollisionBetween(15, 17);
-        map.setCollisionBetween(43, 45);
+        map.setCollisionBetween(0, 159);
 
         layer = map.createLayer('Layer1');
 
@@ -52,12 +52,12 @@ class Main extends Phaser.State {
 
         //  object
         //  start position
-        var objects = map.objects["Object1"].filter(item => item.name === "start_position")[0];
+        // var objects = map.objects["Object1"].filter(item => item.name === "start_position")[0];
 
         // const spriteStart = game.cache.getImage('start', true);
 
         // player = new Player(game, map.playerStartPositions.x, map.playerStartPositions.y, 'dude');
-        player = new Player(game, objects.x, objects.y, 'player');
+        player = new Player(game, 100, 100, 'player');
 
         // if(this.game.device.cocoonJS){
         //     player.scale.setTo(4, 4);
@@ -81,17 +81,18 @@ class Main extends Phaser.State {
 
     update () {
         const game = this.game;
+        player.body.velocity.x = 100;
 
-        game.physics.arcade.collide(player, layer, null, null, player);
+        game.physics.arcade.collide(player, layer);
     }
 
     render () {
         const game = this.game;
 
         // game.debug.text(game.time.physicsElapsed, 32, 32);
-        game.debug.text(game.time.fps || '--', 2, 14, "#00ff00");
+        // game.debug.text(game.time.fps || '--', 2, 14, "#00ff00");
         // game.debug.body(player);
-        // game.debug.bodyInfo(player, 16, 24);
+        game.debug.bodyInfo(player, 16, 24);
     }
 }
 

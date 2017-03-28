@@ -2,15 +2,16 @@ class Player extends Phaser.Sprite {
     constructor(game, x, y, sprite) {
         super(game, x, y, sprite);
 
-        this.gravity = 1000;
+        this.gravity = 1500;
         this.velocityJumpY = -500;
         this.gravityLow = false;
 
         game.physics.enable(this, Phaser.Physics.ARCADE, true);
 
         this.body.collideWorldBounds = true;
-        this.body.setSize(25, 50, 25, 0);
+        this.body.setSize(64, 64, 0, 0);
         this.body.gravity.y = this.gravity;
+        this.body.maxVelocity.y = 1500;
 
         this.animations.add('run', [0,1,2,3,4,5,6], 12, true);
 
@@ -26,7 +27,7 @@ class Player extends Phaser.Sprite {
         
         this.animations.play('run');
 
-        this.body.velocity.x = 550;
+        this.body.velocity.x = 100;
         this.anchor.setTo(0.5, 0.5);
 
         this.jumpCount = 0;
@@ -46,15 +47,13 @@ class Player extends Phaser.Sprite {
             return;
         }
 
-        if (this.checkGround() && this.jumpCount === 0) {
+        if (this.checkGround()) {
             this.isJump = true;
             // this.animations.play('jumping');
 
             this.body.velocity.y = this.velocityJumpY;
 
             this.jumpTimer = this.game.time.now + 750;
-
-            this.jumpCount++;
         }
     }
     
@@ -68,7 +67,7 @@ class Player extends Phaser.Sprite {
         this.gravityLow = !this.gravityLow;
         this.gravity = -this.gravity;
         this.velocityJumpY = -this.velocityJumpY;
-        this.body.gravity.y = this.gravity;
+        this.body.gravity.y = -this.body.gravity.y;
         this.animations.play('changeGravity', null, false);
 
         // осторожно костылидзе

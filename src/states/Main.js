@@ -37,7 +37,6 @@ class Main extends Phaser.State {
 
         game.time.advancedTiming = true;
         game.physics.startSystem(Phaser.Physics.ARCADE);
-        game.physics.arcade.gravity.y = 200;
 
         map = game.add.tilemap("myLevel");
 
@@ -83,7 +82,7 @@ class Main extends Phaser.State {
     update () {
         const game = this.game;
 
-        game.physics.arcade.collide(player, layer, null, null, player);
+        game.physics.arcade.collide(player, layer, player.collisionCallback, null, player);
     }
 
     render () {

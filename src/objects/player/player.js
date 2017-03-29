@@ -9,7 +9,7 @@ class Player extends Phaser.Sprite {
         game.physics.enable(this, Phaser.Physics.ARCADE, true);
 
         this.body.collideWorldBounds = true;
-        this.body.setSize(25, 50, 25, 0);
+        this.body.setSize(64, 64, 0, 0);
         this.body.gravity.y = this.gravity;
 
         this.animations.add('run', [0,1,2,3,4,5,6], 12, true);
@@ -19,9 +19,15 @@ class Player extends Phaser.Sprite {
                 this.animations.play('run');
             });
 
-        this.animations.add('changeGravity', [20,21,22,23,24,25,26,27], 12, true)
+        this.animations.add('changeGravitySecond', [24,25,26,27], 12, true)
             .onComplete.add(() => {
                 this.animations.play('run');
+            });
+
+        this.animations.add('changeGravityFirst', [20,21,22,23], 12, true)
+            .onComplete.add(() => {
+                this.scale.y = -this.scale.y;
+                this.animations.play('changeGravitySecond', null, false);
             });
         
         this.animations.play('run');
@@ -63,21 +69,22 @@ class Player extends Phaser.Sprite {
     }
 
     changeGravity() {
-        const MIDDLE_OF_ANIMATION_TIMEOUT = 300;
-
         this.gravityLow = !this.gravityLow;
         this.gravity = -this.gravity;
         this.velocityJumpY = -this.velocityJumpY;
         this.body.gravity.y = this.gravity;
-        this.animations.play('changeGravity', null, false);
-
-        // осторожно костылидзе
-        setTimeout(() => {this.scale.y = -this.scale.y}, MIDDLE_OF_ANIMATION_TIMEOUT);
+        this.animations.play('changeGravityFirst', null, false);
     }
     
     checkGround () {
         
         return this.gravityLow ? this.body.onCeiling() : this.body.onFloor();
+    }
+
+    collisionCallback () {
+        if(this.checkGround()){
+            this.body.velocity.x = 550;
+        }
     }
 }
 

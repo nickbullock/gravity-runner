@@ -160,8 +160,8 @@ class LevelsState extends Phaser.State {
 
     startLevel (idLevel) {
         this.game.state.start("Main",
-            Phaser.Plugin.StateTransition.Out.SlideLeft,
-            Phaser.Plugin.StateTransition.In.SlideLeft,
+            null,
+            null,
             true,
             false,
             idLevel

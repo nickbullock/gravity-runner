@@ -1,40 +1,29 @@
+/* global Phaser*/
+
+/**
+ * @class Preload
+ */
 class Preload extends Phaser.State {
+    constructor (configGame) {
+        super();
+
+        this.configGame = configGame;
+    }
 
     preload() {
-        this.game.stage.backgroundColor = '#ffffff';
-        const text = this.game.add.text(this.game.world.centerX, this.game.world.centerY, 'Loading...');
+        const game = this.game;
+
+        game.stage.backgroundColor = '#ffffff';
+
+        const text = game.add.text(game.world.centerX, game.world.centerY, 'Loading...');
+
         text.anchor.setTo(0.5, 0.5);
 
-        //###### game-title #####
-        this.game.load.bitmapFont('desyrel', 'assets/fonts/bitmap/desyrel/desyrel.png', 'assets/fonts/bitmap/desyrel/desyrel.xml');
-        this.game.load.spritesheet('logo', 'assets/imgs/game-title/logo.png', 70, 90);
-        this.game.load.spritesheet('shadow', 'assets/imgs/game-title/shadow.png', 138, 15);
-        
-        //####### menu ######
-        this.game.load.image('bg', 'assets/imgs/level/BG.png');
-        this.game.load.bitmapFont('future', 'assets/fonts/bitmap/future/future.png', 'assets/fonts/bitmap/future/future.fnt');
-        this.game.load.audio('click', 'assets/audio/menu/click.ogg');
+        //  load assets
+        this.loadAssets(this.configGame["assets"]);
 
-        this.game.load.spritesheet('green_button', 'assets/imgs/menu/green_button.png');
-        this.game.load.spritesheet('blue_button', 'assets/imgs/menu/blue_button.png');
-        this.game.load.spritesheet('red_button', 'assets/imgs/menu/red_button.png');
-        
-        //####### main #####
-        // this.game.load.tilemap('map', 'assets/maps/spring-level1.json', null, Phaser.Tilemap.TILED_JSON);
-        // this.game.load.image('level-spring', 'assets/imgs/level/level-spring.png');
-        // this.game.load.atlas(
-        //     'player',
-        //     'assets/imgs/players/ninja-girl/spritesheet/ninja-girl.png',
-        //     'assets/imgs/players/ninja-girl/spritesheet/ninja-girl.json'
-        // );
-
-        //##### new_sprite #####
-        // this.game.load.tilemap('myLevel', 'assets/maps/level1.json', null, Phaser.Tilemap.TILED_JSON);
-        this.game.load.image('grass', 'assets/imgs/level/grass.png');
-        this.game.load.spritesheet('player', 'assets/imgs/players/player_v1.png', 64, 64);
-
-        this.game.load.onFileComplete.add(this.showProgress.bind(null, text), this);
-        this.game.load.onLoadComplete.add(this.startGame, this);
+        game.load.onFileComplete.add(this.showProgress.bind(null, text), this);
+        game.load.onLoadComplete.add(this.startGame, this);
     }
 
     showProgress(text, progress) {
@@ -42,15 +31,61 @@ class Preload extends Phaser.State {
     }
 
     startGame() {
-        this.game.load.onFileComplete.dispose();
-        this.game.load.onLoadComplete.dispose();
+        const game = this.game;
 
-        this.game.state.start("GameTitle",
+        game.load.onFileComplete.dispose();
+        game.load.onLoadComplete.dispose();
+
+        game.state.start("GameTitle",
             Phaser.Plugin.StateTransition.Out.SlideLeft,
-            Phaser.Plugin.StateTransition.In.SlideLeft
+            Phaser.Plugin.StateTransition.In.SlideLeft,
+            this.configGame
         );
     }
 
+    /**
+     *
+     * @param {object} dataAssets - key is config asset
+     * @return {null} -
+     */
+    loadAssets (dataAssets) {
+        if (!dataAssets) {
+            console.error("[State.Preload.loadAssets] Not found assets config for load resource.");
+
+            return null;
+        }
+
+        Object.keys(dataAssets).forEach(function loadAssetByType (keyAsset) {
+            const dataAsset = dataAssets[keyAsset];
+            const typeAsset = dataAsset.type;
+
+            switch (typeAsset) {
+                case "image":
+                    this.load.image(keyAsset, dataAsset.source);
+                    break;
+                case "spritesheet":
+                    this.load.spritesheet(
+                        keyAsset,
+                        dataAsset.source, dataAsset.frame_width, dataAsset.frame_height,
+                        dataAsset.frames, dataAsset.margin, dataAsset.spacing);
+                    break;
+                case "tilemap":
+                    this.load.tilemap(keyAsset, dataAsset.source, null, Phaser.Tilemap.TILED_JSON);
+                    break;
+                case "bitmapFont":
+                    this.load.bitmapFont(keyAsset, dataAsset.source, dataAsset.atlasURL);
+                    break;
+                case "audio":
+                    this.load.audio(keyAsset, dataAsset.source);
+                    break;
+                default:
+                    console.error(`[State.Preload.loadAssets] Not implement type assets [${typeAsset}], name [${keyAsset}].`);
+                    break;
+            }
+        });
+
+        return null;
+    }
 }
 
 export default Preload;

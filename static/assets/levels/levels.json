@@ -1,0 +1,72 @@
+{
+    "assets": {
+        "map_tiles": {
+            "type": "image",
+            "source": "assets/imgs/level/tileset.png"
+        },
+        "player_spritesheet": {
+            "type": "spritesheet",
+            "source": "assets/imgs/players/player_v1.png",
+            "frame_width": 64,
+            "frame_height": 64,
+            "frames": 12,
+            "margin": 1,
+            "spacing": 1
+        },
+        "level01_tilemap": {
+            "type": "tilemap",
+            "source": "assets/maps/level1-gravity-v1.json"
+        },
+        "desyrel": {
+            "type": "bitmapFont",
+            "source": "assets/fonts/bitmap/desyrel/desyrel.png",
+            "atlasURL": "assets/fonts/bitmap/desyrel/desyrel.xml"
+        },
+        "logo": {
+            "type": "spritesheet",
+            "source": "assets/imgs/game-title/logo.png",
+            "frame_width": 70,
+            "frame_height": 90
+        },
+        "shadow": {
+            "type": "spritesheet",
+            "source": "assets/imgs/players/player_v1.png",
+            "frame_width": 138,
+            "frame_height": 15
+        },
+        "bg": {
+            "type": "image",
+            "source": "assets/imgs/level/BG.png"
+        },
+        "future": {
+            "type": "bitmapFont",
+            "source": "assets/fonts/bitmap/future/future.png",
+            "atlasURL": "assets/fonts/bitmap/future/future.fnt"
+        },
+        "click": {
+            "type": "audio",
+            "source": "assets/audio/menu/click.ogg"
+        },
+        "green_button": {
+            "type": "spritesheet",
+            "source": "assets/imgs/menu/green_button.png"
+        },
+        "blue_button": {
+            "type": "spritesheet",
+            "source": "assets/imgs/menu/blue_button.png"
+        },
+        "red_button": {
+            "type": "spritesheet",
+            "source": "assets/imgs/menu/red_button.png"
+        },
+    },
+    "groups": [
+        "players"
+    ],
+    "maps": {
+        "level01": {
+            "key": "level01_tilemap",
+            "tileset": "map_tiles"
+        }
+    }
+}

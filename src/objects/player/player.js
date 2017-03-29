@@ -29,7 +29,7 @@ class Player extends Phaser.Sprite {
                 this.scale.y = -this.scale.y;
                 this.animations.play('changeGravitySecond', null, false);
             });
-        
+
         this.animations.play('run');
 
         this.body.velocity.x = 550;

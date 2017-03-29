@@ -51,12 +51,13 @@ class Main extends Phaser.State {
 
         //  object
         //  start position
-        var objects = map.objects["Object1"].filter(item => item.name === "start_position")[0];
+        const groupStart = game.add.group();
+        map.createFromObjects('Object1', 1, 'start_position', 0, true, false, groupStart);
 
-        // const spriteStart = game.cache.getImage('start', true);
+        const spriteStartPosition = groupStart.children[0];
 
-        // player = new Player(game, map.playerStartPositions.x, map.playerStartPositions.y, 'dude');
-        player = new Player(game, objects.x, objects.y, 'player');
+        player = new Player(game, 0, 0, 'player');
+        player.alignIn(spriteStartPosition, Phaser.BOTTOM_LEFT);
 
         // if(this.game.device.cocoonJS){
         //     player.scale.setTo(4, 4);

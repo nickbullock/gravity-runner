@@ -4,8 +4,7 @@
  * @class Preload
  */
 class Preload extends Phaser.State {
-    constructor (configGame) {
-        super();
+    init (configGame) {
 
         this.configGame = configGame;
     }
@@ -26,11 +25,11 @@ class Preload extends Phaser.State {
         game.load.onLoadComplete.add(this.startGame, this);
     }
 
-    showProgress(text, progress) {
+    showProgress (text, progress) {
         text.setText("Loading: " + progress + "%");
     }
 
-    startGame() {
+    startGame () {
         const game = this.game;
 
         game.load.onFileComplete.dispose();
@@ -39,6 +38,7 @@ class Preload extends Phaser.State {
         game.state.start("GameTitle",
             Phaser.Plugin.StateTransition.Out.SlideLeft,
             Phaser.Plugin.StateTransition.In.SlideLeft,
+            true, false,
             this.configGame
         );
     }
@@ -55,28 +55,30 @@ class Preload extends Phaser.State {
             return null;
         }
 
+        const that = this;
+
         Object.keys(dataAssets).forEach(function loadAssetByType (keyAsset) {
             const dataAsset = dataAssets[keyAsset];
             const typeAsset = dataAsset.type;
 
             switch (typeAsset) {
                 case "image":
-                    this.load.image(keyAsset, dataAsset.source);
+                    that.load.image(keyAsset, dataAsset.source);
                     break;
                 case "spritesheet":
-                    this.load.spritesheet(
+                    that.load.spritesheet(
                         keyAsset,
                         dataAsset.source, dataAsset.frame_width, dataAsset.frame_height,
                         dataAsset.frames, dataAsset.margin, dataAsset.spacing);
                     break;
                 case "tilemap":
-                    this.load.tilemap(keyAsset, dataAsset.source, null, Phaser.Tilemap.TILED_JSON);
+                    that.load.tilemap(keyAsset, dataAsset.source, null, Phaser.Tilemap.TILED_JSON);
                     break;
                 case "bitmapFont":
-                    this.load.bitmapFont(keyAsset, dataAsset.source, dataAsset.atlasURL);
+                    that.load.bitmapFont(keyAsset, dataAsset.source, dataAsset.atlasURL);
                     break;
                 case "audio":
-                    this.load.audio(keyAsset, dataAsset.source);
+                    that.load.audio(keyAsset, dataAsset.source);
                     break;
                 default:
                     console.error(`[State.Preload.loadAssets] Not implement type assets [${typeAsset}], name [${keyAsset}].`);

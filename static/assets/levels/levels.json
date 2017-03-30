@@ -30,7 +30,7 @@
         },
         "shadow": {
             "type": "spritesheet",
-            "source": "assets/imgs/players/player_v1.png",
+            "source": "assets/imgs/game-title/shadow.png",
             "frame_width": 138,
             "frame_height": 15
         },
@@ -58,7 +58,7 @@
         "red_button": {
             "type": "spritesheet",
             "source": "assets/imgs/menu/red_button.png"
-        },
+        }
     },
     "groups": [
         "players"

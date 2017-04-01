@@ -1,9 +1,10 @@
 /* global Phaser */
-"use strict";
 
 class GameTitle extends Phaser.State {
 
     create() {
+        "use strict";
+
         const LOGO_LETTERS_COUNT = 4;
         const MAIN_STATE_START_TIMEOUT = 5000;
         

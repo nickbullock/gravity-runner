@@ -1,0 +1,94 @@
+{
+    "assets": {
+        "future_tileset": {
+            "type": "image",
+            "source": "static/assets/imgs/level/tileset.png"
+        },
+        "player_spritesheet": {
+            "type": "spritesheet",
+            "source": "static/assets/imgs/players/player_v1.png",
+            "frame_width": 64,
+            "frame_height": 64,
+            "frames": 12,
+            "margin": 1,
+            "spacing": 1
+        },
+        "level01_tilemap": {
+            "type": "tilemap",
+            "source": "static/assets/maps/level1-gravity-v1.json"
+        },
+        "desyrel": {
+            "type": "bitmapFont",
+            "source": "static/assets/fonts/bitmap/desyrel/desyrel.png",
+            "atlasURL": "static/assets/fonts/bitmap/desyrel/desyrel.xml"
+        },
+        "logo": {
+            "type": "spritesheet",
+            "source": "static/assets/imgs/game-title/logo.png",
+            "frame_width": 70,
+            "frame_height": 90
+        },
+        "shadow": {
+            "type": "spritesheet",
+            "source": "static/assets/imgs/game-title/shadow.png",
+            "frame_width": 138,
+            "frame_height": 15
+        },
+        "bg": {
+            "type": "image",
+            "source": "static/assets/imgs/level/BG.png"
+        },
+        "future": {
+            "type": "bitmapFont",
+            "source": "static/assets/fonts/bitmap/future/future.png",
+            "atlasURL": "static/assets/fonts/bitmap/future/future.fnt"
+        },
+        "click": {
+            "type": "audio",
+            "source": "static/assets/audio/menu/click.ogg"
+        },
+        "green_button": {
+            "type": "spritesheet",
+            "source": "static/assets/imgs/menu/green_button.png"
+        },
+        "blue_button": {
+            "type": "spritesheet",
+            "source": "static/assets/imgs/menu/blue_button.png"
+        },
+        "red_button": {
+            "type": "spritesheet",
+            "source": "static/assets/imgs/menu/red_button.png"
+        },
+        "level_arrows": {
+            "type": "spritesheet",
+            "source": "static/assets/imgs/level-selection/level_arrows.png",
+            "frame_width": 48,
+            "frame_height": 48
+        },
+        "levels": {
+            "type": "spritesheet",
+            "source": "/static/assets/imgs/level-selection/levels.png",
+            "frame_width": 64,
+            "frame_height": 64
+        }
+    },
+    "groups": [
+        "players"
+    ],
+    "maps": {
+        "level_selection": {
+            "thumbRows": 4,
+            "thumbColumns": 5,
+            "thumbWidth": 64,
+            "thumbHeight": 64,
+            "thumbSpacing": 8
+        },
+        "levels": [
+            {
+                "name": "Tutorial",
+                "key": "level01_tilemap",
+                "tileset": "future_tileset"
+            }
+        ]
+    }
+}

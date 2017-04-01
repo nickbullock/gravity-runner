@@ -12,7 +12,9 @@ class Menu extends Phaser.State {
                     this.game.sound.play('click');
                     this.game.state.start("LevelsState",
                         Phaser.Plugin.StateTransition.Out.SlideLeft,
-                        Phaser.Plugin.StateTransition.In.SlideLeft
+                        Phaser.Plugin.StateTransition.In.SlideLeft,
+                        true,
+                        false
                     );
                 },
                 label: "Играть"

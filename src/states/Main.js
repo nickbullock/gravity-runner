@@ -27,7 +27,7 @@ class Main extends Phaser.State {
     preload () {
         this.game.load.tilemap(
             'myLevel',
-            `/assets/maps${this.idLevel}.json`,
+            `static/assets/maps${this.idLevel}.json`,
             null,
             Phaser.Tilemap.TILED_JSON);
     }

@@ -97,7 +97,7 @@ class LevelsState extends Phaser.State {
         levelThumb.frame = countStars;
         // custom attribute
         levelThumb.levelNumber = index + 1;
-        levelThumb.idLevel = this.levels[index].file;
+        levelThumb.dataLevel = this.levels[index];
 
         // adding the level thumb to the group
         levelThumbsGroup.add(levelThumb);
@@ -131,7 +131,7 @@ class LevelsState extends Phaser.State {
 
         // the level is playable, then play the level!!
         if(button.frame < Levels.state.CLOSE){
-            this.startLevel(button.idLevel)
+            this.startLevel(button.dataLevel)
         }
         // else, let's shake the locked levels
         else{
@@ -156,13 +156,13 @@ class LevelsState extends Phaser.State {
         }
     }
 
-    startLevel (idLevel) {
+    startLevel (dataLevel) {
         this.game.state.start("Main",
             null,
             null,
             true,
             false,
-            idLevel
+            dataLevel
         );
     }
 

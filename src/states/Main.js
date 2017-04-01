@@ -17,19 +17,11 @@ let jumpTimer = 0;
 class Main extends Phaser.State {
     /**
      *
-     * @param idLevel - относительный путь от /assets/maps с / без расширения. Поддерживаем пока только
+     * @param dataLevel - относительный путь от /assets/maps с / без расширения. Поддерживаем пока только
      * JSON config tiles map
      */
-    init (idLevel) {
-        this.idLevel = idLevel;
-    }
-
-    preload () {
-        this.game.load.tilemap(
-            'myLevel',
-            `/assets/maps${this.idLevel}.json`,
-            null,
-            Phaser.Tilemap.TILED_JSON);
+    init (dataLevel) {
+        this.dataLevel = dataLevel;
     }
 
     create () {
@@ -38,33 +30,32 @@ class Main extends Phaser.State {
         game.time.advancedTiming = true;
         game.physics.startSystem(Phaser.Physics.ARCADE);
 
-        map = game.add.tilemap("myLevel");
+        map = game.add.tilemap(this.dataLevel.key);
 
-        map.addTilesetImage('grass');
+        map.addTilesetImage(this.dataLevel.tileset);
 
-        map.setCollisionBetween(15, 17);
-        map.setCollisionBetween(43, 45);
+        // map.setCollisionBetween(15, 17);
+        // map.setCollisionBetween(43, 45);
 
-        layer = map.createLayer('Layer1');
+        layer = map.createLayer("LayerCollision");
+        const layer1 = map.createLayer("trees");
 
         layer.resizeWorld();
 
         //  object
         //  start position
-        const groupStart = game.add.group();
-        map.createFromObjects('Object1', 1, 'start_position', 0, true, false, groupStart);
+        const groupPlayers = game.add.group();
 
-        const spriteStartPosition = groupStart.children[0];
+        // map.createFromObjects('Object1', 113, 'player_spritesheet', 0, true, false, groupPlayers);
 
-        player = new Player(game, 0, 0, 'player');
-        player.alignIn(spriteStartPosition, Phaser.BOTTOM_LEFT);
+        player = new Player(game, 10, 10, 'player_spritesheet');
 
         // if(this.game.device.cocoonJS){
         //     player.scale.setTo(4, 4);
         //     player.body.velocity.x = 600;
         // }
 
-        game.camera.follow(player);
+        // game.camera.follow(player);
 
         //  init controls
         cursors = game.input.keyboard.createCursorKeys();
@@ -82,16 +73,16 @@ class Main extends Phaser.State {
     update () {
         const game = this.game;
 
-        game.physics.arcade.collide(player, layer, player.collisionCallback, null, player);
+        // game.physics.arcade.collide(player, layer, player.collisionCallback, null, player);
     }
 
     render () {
         const game = this.game;
 
         // game.debug.text(game.time.physicsElapsed, 32, 32);
-        game.debug.text(game.time.fps || '--', 2, 14, "#00ff00");
-        game.debug.body(player);
-        game.debug.bodyInfo(player, 16, 24);
+        // game.debug.text(game.time.fps || '--', 2, 14, "#00ff00");
+        // game.debug.body(player);
+        // game.debug.bodyInfo(player, 16, 24);
     }
 }
 

@@ -1,6 +1,6 @@
 {
     "assets": {
-        "map_tiles": {
+        "future_tileset": {
             "type": "image",
             "source": "assets/imgs/level/tileset.png"
         },
@@ -87,7 +87,7 @@
             {
                 "name": "Tutorial",
                 "key": "level01_tilemap",
-                "tileset": "map_tiles"
+                "tileset": "future_tileset"
             }
         ]
     }

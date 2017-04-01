@@ -2,15 +2,6 @@ import Player from './../objects/player/player';
 
 /* global Phaser*/
 
-let cursors;
-let player;
-let jumpButton;
-let gravityButton;
-let attackButton;
-let map;
-let layer;
-let jumpTimer = 0;
-
 /**
  * @class Main
  */
@@ -22,67 +13,97 @@ class Main extends Phaser.State {
      */
     init (dataLevel) {
         this.dataLevel = dataLevel;
+
+        this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+        this.scale.pageAlignHorizontally = true;
+        this.scale.pageAlignVertically = true;
+
+        // start physics system
+        this.game.physics.startSystem(Phaser.Physics.ARCADE);
+        this.game.physics.arcade.gravity.y = 200;
+
+        // create map and set tileset
+        this.map = this.game.add.tilemap(this.dataLevel.key);
+        //  Здесь должно быть соответствие между tileset указанным на карте и ресурсом загруженным в игру
+        //  сейчас сделано так что имена их совпадают
+        this.map.addTilesetImage(this.dataLevel.tileset);
     }
 
     create () {
         const game = this.game;
 
-        game.time.advancedTiming = true;
-        game.physics.startSystem(Phaser.Physics.ARCADE);
+        // game.time.advancedTiming = true;
 
-        map = game.add.tilemap(this.dataLevel.key);
+        // create map layers
+        let nameGroup, layerObject, tilesCollision;
 
-        map.addTilesetImage(this.dataLevel.tileset);
+        this.layers = {};
+        this.map.layers.forEach(function (layer) {
+            this.layers[layer.name] = this.map.createLayer(layer.name);
 
-        // map.setCollisionBetween(15, 17);
-        // map.setCollisionBetween(43, 45);
+            if (layer.properties.collision) { // collision layer
+                tilesCollision = [];
+                layer.data.forEach(function (dataRow) { // find tiles used in the layer
+                    dataRow.forEach(function (tile) {
+                        // check if it's a valid tile index and isn't already in the list
+                        if (tile.index > 0 && tilesCollision.indexOf(tile.index) === -1) {
+                            tilesCollision.push(tile.index);
+                        }
+                    }, this);
+                }, this);
+                this.map.setCollision(tilesCollision, true, layer.name);
+            }
+        }, this);
+        // resize the world to be the size of the current layer
+        this.layers[this.map.layer.name].resizeWorld();
 
-        layer = map.createLayer("LayerCollision");
-        const layer1 = map.createLayer("trees");
+        // create groups
+        this.groups = {};
+        game.dataConfigGame.groups.forEach(function (nameGroup) {
+            this.groups[nameGroup] = this.game.add.group();
+        }, this);
 
-        layer.resizeWorld();
+        this.prefabs = {};
 
-        //  object
-        //  start position
-        const groupPlayers = game.add.group();
-
-        // map.createFromObjects('Object1', 113, 'player_spritesheet', 0, true, false, groupPlayers);
-
-        player = new Player(game, 10, 10, 'player_spritesheet');
-
-        // if(this.game.device.cocoonJS){
-        //     player.scale.setTo(4, 4);
-        //     player.body.velocity.x = 600;
-        // }
-
-        // game.camera.follow(player);
-
-        //  init controls
-        cursors = game.input.keyboard.createCursorKeys();
-        jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-        gravityButton = game.input.keyboard.addKey(Phaser.Keyboard.C);
-        attackButton = game.input.keyboard.addKey(Phaser.Keyboard.V);
-
-        jumpButton.onDown.add(player.jump, player);
-        gravityButton.onDown.add(player.changeGravity, player);
-        attackButton.onDown.add(player.attack, player);
-
-        game.input.onTap.add(player.jump, player);
-    }
-
-    update () {
-        const game = this.game;
-
-        // game.physics.arcade.collide(player, layer, player.collisionCallback, null, player);
+        for (layerObject in this.map.objects) {
+            if (this.map.objects.hasOwnProperty(layerObject)) {
+                // create layer objects
+                this.map.objects[layerObject].forEach(this.createObject, this);
+            }
+        }
     }
 
     render () {
         const game = this.game;
 
-        // game.debug.text(game.time.physicsElapsed, 32, 32);
-        // game.debug.text(game.time.fps || '--', 2, 14, "#00ff00");
-        // game.debug.body(player);
-        // game.debug.bodyInfo(player, 16, 24);
+        game.debug.text(game.time.physicsElapsed, 32, 32);
+        game.debug.text(game.time.fps || '--', 2, 14, "#00ff00");
+    }
+
+    createObject (object) {
+        "use strict";
+
+        let prefab;
+        // tiled coordinates starts in the bottom left corner
+        const position = {"x": object.x + (this.map.tileHeight / 2), "y": object.y - (this.map.tileHeight / 2)};
+
+        // create object according to its type
+        switch (object.type) {
+            case "player":
+                prefab = new Player(this, position, object.properties);
+                break;
+
+            default:
+                console.warn(`[State.Main.createObject] Not implement type object [${object.type}].`);
+                break;
+        }
+
+        this.prefabs[object.name] = prefab;
+    }
+
+    restartLevel () {
+        "use strict";
+        this.game.state.restart(true, false, this.dataLevel);
     }
 }
 

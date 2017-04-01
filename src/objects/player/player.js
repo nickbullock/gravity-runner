@@ -1,6 +1,19 @@
+/* global Phaser*/
+
+let cursors;
+let jumpButton;
+let gravityButton;
+let attackButton;
+
 class Player extends Phaser.Sprite {
-    constructor(game, x, y, sprite) {
-        super(game, x, y, sprite);
+    //  todo: split player on prefabs and player
+    constructor(stateGame, position, properties) {
+        const game = stateGame.game;
+
+        super(game, position.x, position.y, properties.texture);
+
+        this.stateGame = stateGame;
+        this.stateGame.groups[properties.group].add(this);
 
         this.gravity = 1000;
         this.velocityJumpY = -500;
@@ -12,18 +25,21 @@ class Player extends Phaser.Sprite {
         this.body.setSize(64, 64, 0, 0);
         this.body.gravity.y = this.gravity;
 
-        this.animations.add('run', [0,1,2,3,4,5,6], 12, true);
+        //  todo: fix animation run
+        this.animations.add('run', [0,1,2,3,4,5], 12, true);
 
         this.animations.add('attack', [7,8,9,10,11,12,13,14,15,16,17,18,19], 12, true)
             .onComplete.add(() => {
                 this.animations.play('run');
             });
 
+        //  todo: fix animation gravity
         this.animations.add('changeGravitySecond', [24,25,26,27], 12, true)
             .onComplete.add(() => {
                 this.animations.play('run');
             });
 
+        //  todo: fix animation gravity
         this.animations.add('changeGravityFirst', [20,21,22,23], 12, true)
             .onComplete.add(() => {
                 this.scale.y = -this.scale.y;
@@ -42,7 +58,35 @@ class Player extends Phaser.Sprite {
 
         game.add.existing(this);
 
+        game.camera.follow(this);
+
+        //  init controls
+        cursors = game.input.keyboard.createCursorKeys();
+        jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+        gravityButton = game.input.keyboard.addKey(Phaser.Keyboard.C);
+        attackButton = game.input.keyboard.addKey(Phaser.Keyboard.V);
+
+        jumpButton.onDown.add(this.jump, this);
+        gravityButton.onDown.add(this.changeGravity, this);
+        attackButton.onDown.add(this.attack, this);
+
+        game.input.onTap.add(this.jump, this);
+
         return this;
+    }
+
+    update () {
+        this.stateGame.game.physics.arcade.collide(this, this.stateGame.layers.LayerCollision);
+
+        //  todo: add restart level after end level
+    }
+
+    render () {
+        const stateGame = this.stateGame;
+
+        //  todo: fix debug player
+        stateGame.game.debug.body(this);
+        stateGame.game.debug.bodyInfo(this, 16, 24);
     }
 
     jump(pointer, doubleTap) {

@@ -20,7 +20,7 @@ class Game extends Phaser.Game {
         this.state.add('Main', Main, false);
         this.state.add('GameOver', GameOver, false);
 
-        this.state.start('Boot', null, null, true, false, "assets/levels/levels.json");
+        this.state.start('Boot', null, null, true, false, "/static/assets/levels/levels.json");
     }
 }
 

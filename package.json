@@ -5,7 +5,7 @@
   "author": "brusok",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack",
+    "dev": "NODE_ENV=development webpack",
     "deploy": "webpack --config webpack.production.config.js",
     "test": "eslint ./src/**/**.js"
   },

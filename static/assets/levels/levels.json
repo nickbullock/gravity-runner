@@ -2,11 +2,11 @@
     "assets": {
         "future_tileset": {
             "type": "image",
-            "source": "assets/imgs/level/tileset.png"
+            "source": "static/assets/imgs/level/tileset.png"
         },
         "player_spritesheet": {
             "type": "spritesheet",
-            "source": "assets/imgs/players/player_v1.png",
+            "source": "static/assets/imgs/players/player_v1.png",
             "frame_width": 64,
             "frame_height": 64,
             "frames": 12,
@@ -15,59 +15,59 @@
         },
         "level01_tilemap": {
             "type": "tilemap",
-            "source": "assets/maps/level1-gravity-v1.json"
+            "source": "static/assets/maps/level1-gravity-v1.json"
         },
         "desyrel": {
             "type": "bitmapFont",
-            "source": "assets/fonts/bitmap/desyrel/desyrel.png",
-            "atlasURL": "assets/fonts/bitmap/desyrel/desyrel.xml"
+            "source": "static/assets/fonts/bitmap/desyrel/desyrel.png",
+            "atlasURL": "static/assets/fonts/bitmap/desyrel/desyrel.xml"
         },
         "logo": {
             "type": "spritesheet",
-            "source": "assets/imgs/game-title/logo.png",
+            "source": "static/assets/imgs/game-title/logo.png",
             "frame_width": 70,
             "frame_height": 90
         },
         "shadow": {
             "type": "spritesheet",
-            "source": "assets/imgs/game-title/shadow.png",
+            "source": "static/assets/imgs/game-title/shadow.png",
             "frame_width": 138,
             "frame_height": 15
         },
         "bg": {
             "type": "image",
-            "source": "assets/imgs/level/BG.png"
+            "source": "static/assets/imgs/level/BG.png"
         },
         "future": {
             "type": "bitmapFont",
-            "source": "assets/fonts/bitmap/future/future.png",
-            "atlasURL": "assets/fonts/bitmap/future/future.fnt"
+            "source": "static/assets/fonts/bitmap/future/future.png",
+            "atlasURL": "static/assets/fonts/bitmap/future/future.fnt"
         },
         "click": {
             "type": "audio",
-            "source": "assets/audio/menu/click.ogg"
+            "source": "static/assets/audio/menu/click.ogg"
         },
         "green_button": {
             "type": "spritesheet",
-            "source": "assets/imgs/menu/green_button.png"
+            "source": "static/assets/imgs/menu/green_button.png"
         },
         "blue_button": {
             "type": "spritesheet",
-            "source": "assets/imgs/menu/blue_button.png"
+            "source": "static/assets/imgs/menu/blue_button.png"
         },
         "red_button": {
             "type": "spritesheet",
-            "source": "assets/imgs/menu/red_button.png"
+            "source": "static/assets/imgs/menu/red_button.png"
         },
         "level_arrows": {
             "type": "spritesheet",
-            "source": "assets/imgs/level-selection/level_arrows.png",
+            "source": "static/assets/imgs/level-selection/level_arrows.png",
             "frame_width": 48,
             "frame_height": 48
         },
         "levels": {
             "type": "spritesheet",
-            "source": "/assets/imgs/level-selection/levels.png",
+            "source": "/static/assets/imgs/level-selection/levels.png",
             "frame_width": 64,
             "frame_height": 64
         }

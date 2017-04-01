@@ -52,15 +52,13 @@ class Player extends Phaser.Sprite {
             return;
         }
 
-        if (this.checkGround() && this.jumpCount === 0) {
+        if (this.checkGround()) {
             this.isJump = true;
             // this.animations.play('jumping');
 
             this.body.velocity.y = this.velocityJumpY;
 
             this.jumpTimer = this.game.time.now + 750;
-
-            this.jumpCount++;
         }
     }
     

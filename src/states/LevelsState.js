@@ -1,22 +1,19 @@
 /* global Phaser */
 
-import levelsConfig from "../config/level-selection.json"
 import currentPlayerStars from "../fixture/current-player-level-progress.json"
 import Levels from "../objects/map/levels"
 
 'use strict';
 
-const NAME_LEVELS = "levels";
-const NAME_LEVEL_ARROW = "level_arrows";
-
-const levels = levelsConfig.levels;
-
 /**
  *
  */
 class LevelsState extends Phaser.State {
-    constructor () {
-        super();
+    init () {
+
+        const dataConfigGame = this.game.dataConfigGame;
+        const dataConfigMap = dataConfigGame["maps"];
+        const levelsConfig = dataConfigMap["level_selection"];
 
         this.thumbWidth = levelsConfig["thumbWidth"];
         this.thumbHeight = levelsConfig["thumbHeight"];
@@ -24,6 +21,9 @@ class LevelsState extends Phaser.State {
         this.thumbRows = levelsConfig["thumbRows"];
         this.thumbSpacing = levelsConfig["thumbSpacing"];
 
+        const levels = dataConfigMap["levels"];
+
+        this.levels = levels;
         this.countLevels = levels.length;
         this.countLevelsPerPage = this.thumbRows * this.thumbColumns;
         this.countPages = Math.ceil(this.countLevels / this.countLevelsPerPage);
@@ -33,21 +33,16 @@ class LevelsState extends Phaser.State {
         this.levelHeight = this.thumbHeight * this.thumbRows + this.thumbSpacing * (this.thumbRows - 1);
     }
 
-    preload () {
-        const game = this.game;
-
-        game.load.spritesheet(NAME_LEVELS, "/assets/imgs/level-selection/levels.png", 64, 64);
-        game.load.spritesheet(NAME_LEVEL_ARROW, "/assets/imgs/level-selection/level_arrows.png", 48, 48);
-    }
-
     create() {
         const game = this.game;
-        const screenHeight = this.game.height;
-        const screenWidth = this.game.width;
+        const screenHeight = game.height;
+        const screenWidth = game.width;
 
         // horizontal offset to have level thumbnails horizontally centered in the page
         const offsetX = (screenWidth - this.levelWidth) / 2;
-        // const offsetY = (screenHeight - levelHeight) / 2;
+
+        //  vertical align
+        //  const offsetY = (screenHeight - levelHeight) / 2;
         const offsetY = 100;
 
         this.levelThumbsGroup = this.levelsInit(offsetX, offsetY, screenWidth);
@@ -60,16 +55,20 @@ class LevelsState extends Phaser.State {
         const game = this.game;
         const handlerArrowClicked = this.handlerArrowClicked.bind(this);
 
-        const leftArrow = this.leftArrow = game.add.button(xStartPosition, yStartPosition, NAME_LEVEL_ARROW, handlerArrowClicked);
+        const leftArrow = this.leftArrow = game.add.button(xStartPosition, yStartPosition, "level_arrows", handlerArrowClicked);
 
         leftArrow.anchor.setTo(0, 0);
         leftArrow.frame = 0;
         leftArrow.alpha = 0.3;
 
-        const rightArrow = this.rightArrow = game.add.button(xStartPosition + levelsWidth, yStartPosition, NAME_LEVEL_ARROW, handlerArrowClicked);
+        const rightArrow = this.rightArrow = game.add.button(xStartPosition + levelsWidth, yStartPosition, "level_arrows", handlerArrowClicked);
 
         rightArrow.anchor.setTo(1, 0);
         rightArrow.frame = 1;
+
+        if (this.levels.length <= this.countLevelsPerPage) {
+            rightArrow.alpha = 0.3;
+        }
     }
 
     levelsInit (xStartPosition, yStartPosition, screenWidth) {
@@ -92,13 +91,13 @@ class LevelsState extends Phaser.State {
     drawButtonLevel (levelThumbsGroup, point, index) {
         const game = this.game;
         const countStars = currentPlayerStars[index] || Levels.state.CLOSE;
-        const levelThumb = game.add.button(point.x, point.y, NAME_LEVELS, this.handlerSelectLevel, this);
+        const levelThumb = game.add.button(point.x, point.y, "levels", this.handlerSelectLevel, this);
 
         // shwoing proper frame
         levelThumb.frame = countStars;
         // custom attribute
         levelThumb.levelNumber = index + 1;
-        levelThumb.idLevel = levels[index].file;
+        levelThumb.idLevel = this.levels[index].file;
 
         // adding the level thumb to the group
         levelThumbsGroup.add(levelThumb);
@@ -155,7 +154,6 @@ class LevelsState extends Phaser.State {
             }, TIME_TWEEN, Phaser.Easing.Cubic.None);
             buttonTween.start();
         }
-        // this.game.state.start("Main", null, null, true, false, idMap);
     }
 
     startLevel (idLevel) {

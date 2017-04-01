@@ -58,15 +58,37 @@
         "red_button": {
             "type": "spritesheet",
             "source": "assets/imgs/menu/red_button.png"
+        },
+        "level_arrows": {
+            "type": "spritesheet",
+            "source": "assets/imgs/level-selection/level_arrows.png",
+            "frame_width": 48,
+            "frame_height": 48
+        },
+        "levels": {
+            "type": "spritesheet",
+            "source": "/assets/imgs/level-selection/levels.png",
+            "frame_width": 64,
+            "frame_height": 64
         }
     },
     "groups": [
         "players"
     ],
     "maps": {
-        "level01": {
-            "key": "level01_tilemap",
-            "tileset": "map_tiles"
-        }
+        "level_selection": {
+            "thumbRows": 4,
+            "thumbColumns": 5,
+            "thumbWidth": 64,
+            "thumbHeight": 64,
+            "thumbSpacing": 8
+        },
+        "levels": [
+            {
+                "name": "Tutorial",
+                "key": "level01_tilemap",
+                "tileset": "map_tiles"
+            }
+        ]
     }
 }

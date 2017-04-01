@@ -4,11 +4,6 @@
  * @class Preload
  */
 class Preload extends Phaser.State {
-    init (configGame) {
-
-        this.configGame = configGame;
-    }
-
     preload() {
         const game = this.game;
 
@@ -19,7 +14,7 @@ class Preload extends Phaser.State {
         text.anchor.setTo(0.5, 0.5);
 
         //  load assets
-        this.loadAssets(this.configGame["assets"]);
+        this.loadAssets(this.game.dataConfigGame["assets"]);
 
         game.load.onFileComplete.add(this.showProgress.bind(null, text), this);
         game.load.onLoadComplete.add(this.startGame, this);
@@ -37,9 +32,7 @@ class Preload extends Phaser.State {
 
         game.state.start("GameTitle",
             Phaser.Plugin.StateTransition.Out.SlideLeft,
-            Phaser.Plugin.StateTransition.In.SlideLeft,
-            true, false,
-            this.configGame
+            Phaser.Plugin.StateTransition.In.SlideLeft
         );
     }
 

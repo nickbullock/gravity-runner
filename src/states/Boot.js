@@ -24,7 +24,9 @@ class Boot extends Phaser.State {
         Phaser.Plugin.StateTransition.Out.SlideLeft.duration = 1000;
         Phaser.Plugin.StateTransition.In.SlideLeft.duration = 1000;
 
-        this.game.state.start("Preload", null, null, true, false, this.game.cache.getJSON("configGame"));
+        this.game.dataConfigGame = this.game.cache.getJSON("configGame");
+
+        this.game.state.start("Preload");
     }
 }
 

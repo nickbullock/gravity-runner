@@ -36,8 +36,8 @@ class LevelsState extends Phaser.State {
     preload () {
         const game = this.game;
 
-        game.load.spritesheet(NAME_LEVELS, "/assets/imgs/level-selection/levels.png", 64, 64);
-        game.load.spritesheet(NAME_LEVEL_ARROW, "/assets/imgs/level-selection/level_arrows.png", 48, 48);
+        game.load.spritesheet(NAME_LEVELS, "static/assets/imgs/level-selection/levels.png", 64, 64);
+        game.load.spritesheet(NAME_LEVEL_ARROW, "static/assets/imgs/level-selection/level_arrows.png", 48, 48);
     }
 
     create() {

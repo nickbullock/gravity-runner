@@ -72,8 +72,9 @@ class Player extends Prefabs {
     }
 
     update () {
-        this.stateGame.game.physics.arcade.collide(this, this.stateGame.layers.LayerCollision);
+        this.stateGame.game.physics.arcade.collide(this, this.stateGame.layers.LayerCollision, this.collisionCallback, null, this);
         this.stateGame.game.physics.arcade.collide(this, this.stateGame.groups.static_enemy, this.hitEnemy, null, this);
+        this.stateGame.game.physics.arcade.collide(this.bloodEmitter, this.stateGame.layers.LayerCollision, this.bloodCollision, null, this);
 
         //  todo: add restart level after end level
     }
@@ -119,7 +120,22 @@ class Player extends Prefabs {
     }
 
     hitEnemy (player, enemy) {
-        this.stateGame.restartLevel();
+        player.damage(1);
+
+        const bloodEmitter = this.game.add.emitter(player.x, player.y - 10, 80);
+
+        bloodEmitter.makeParticles('blood');
+        bloodEmitter.gravity = 500;
+        bloodEmitter.minParticleScale = 1;
+        bloodEmitter.maxParticleScale = 2;
+        bloodEmitter.start(true, 2000, null, 80);
+
+        this.bloodEmitter = bloodEmitter;
+        // this.stateGame.restartLevel();
+    }
+
+    bloodCollision (particle, layer) {
+        particle.body.velocity.x = 0;
     }
 }
 

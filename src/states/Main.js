@@ -75,23 +75,23 @@ class Main extends Phaser.State {
     }
 
     render () {
-        const game = this.game;
-
-        game.debug.text(game.time.physicsElapsed, 32, 32);
-        game.debug.text(game.time.fps || '--', 2, 14, "#00ff00");
-
-        const groupPlayers = this.groups["players"];
-
-        groupPlayers.forEach(function (member) {
-            game.debug.body(member);
-            game.debug.bodyInfo(member, 16, 24);
-        }, this);
-
-        const groupStaticEnemy = this.groups["static_enemy"];
-
-        groupStaticEnemy.forEach(function (member) {
-            game.debug.body(member);
-        }, this);
+        // const game = this.game;
+        //
+        // game.debug.text(game.time.physicsElapsed, 32, 32);
+        // game.debug.text(game.time.fps || '--', 2, 14, "#00ff00");
+        //
+        // const groupPlayers = this.groups["players"];
+        //
+        // groupPlayers.forEach(function (member) {
+        //     game.debug.body(member);
+        //     game.debug.bodyInfo(member, 16, 24);
+        // }, this);
+        //
+        // const groupStaticEnemy = this.groups["static_enemy"];
+        //
+        // groupStaticEnemy.forEach(function (member) {
+        //     game.debug.body(member);
+        // }, this);
     }
 
     createObject (object) {

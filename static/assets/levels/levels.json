@@ -88,6 +88,10 @@
             "frames": 2,
             "margin": 0,
             "spacing": 0
+        },
+        "blood": {
+            "type": "image",
+            "source": "static/assets/imgs/general/blood2.png"
         }
     },
     "groups": [

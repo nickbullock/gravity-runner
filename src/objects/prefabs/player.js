@@ -46,15 +46,13 @@ class Player extends Prefabs {
 
         this.animations.play('run');
 
-        this.body.velocity.x = 550;
+        this.body.velocity.x = 450;
         this.anchor.setTo(0.5, 0.5);
 
         this.jumpCount = 0;
         this.jumpTimer = 0;
         this.isPlayerDead = false;
         this.isJump = false;
-
-        game.add.existing(this);
 
         game.camera.follow(this);
 
@@ -75,16 +73,9 @@ class Player extends Prefabs {
 
     update () {
         this.stateGame.game.physics.arcade.collide(this, this.stateGame.layers.LayerCollision);
+        this.stateGame.game.physics.arcade.collide(this, this.stateGame.groups.static_enemy, this.hitEnemy, null, this);
 
         //  todo: add restart level after end level
-    }
-
-    render () {
-        const stateGame = this.stateGame;
-
-        //  todo: fix debug player
-        stateGame.game.debug.body(this);
-        stateGame.game.debug.bodyInfo(this, 16, 24);
     }
 
     jump(pointer, doubleTap) {
@@ -125,6 +116,10 @@ class Player extends Prefabs {
         if(this.checkGround()){
             this.body.velocity.x = 550;
         }
+    }
+
+    hitEnemy (player, enemy) {
+        this.stateGame.restartLevel();
     }
 }
 

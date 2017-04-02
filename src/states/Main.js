@@ -1,4 +1,4 @@
-import Player from './../objects/player/player';
+import Player from '../objects/prefabs/player';
 
 /* global Phaser*/
 

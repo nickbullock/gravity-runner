@@ -1,19 +1,17 @@
 /* global Phaser*/
 
+import Prefabs from "./prefabs";
+
 let cursors;
 let jumpButton;
 let gravityButton;
 let attackButton;
 
-class Player extends Phaser.Sprite {
-    //  todo: split player on prefabs and player
+class Player extends Prefabs {
     constructor(stateGame, position, properties) {
         const game = stateGame.game;
 
-        super(game, position.x, position.y, properties.texture);
-
-        this.stateGame = stateGame;
-        this.stateGame.groups[properties.group].add(this);
+        super(stateGame, position, properties);
 
         this.gravity = 1000;
         this.velocityJumpY = -500;

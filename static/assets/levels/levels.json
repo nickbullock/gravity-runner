@@ -9,9 +9,9 @@
             "source": "static/assets/imgs/players/player_v1.png",
             "frame_width": 64,
             "frame_height": 64,
-            "frames": 12,
-            "margin": 1,
-            "spacing": 1
+            "frames": 30,
+            "margin": 0,
+            "spacing": 0
         },
         "level01_tilemap": {
             "type": "tilemap",

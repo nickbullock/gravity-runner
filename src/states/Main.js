@@ -86,6 +86,12 @@ class Main extends Phaser.State {
             game.debug.body(member);
             game.debug.bodyInfo(member, 16, 24);
         }, this);
+
+        const groupStaticEnemy = this.groups["static_enemy"];
+
+        groupStaticEnemy.forEach(function (member) {
+            game.debug.body(member);
+        }, this);
     }
 
     createObject (object) {

@@ -808,12 +808,12 @@
                  "properties":
                     {
                      "group":"static_enemy",
-                     "texure":"future_tileset"
+                     "texture":"peaks_spritesheet"
                     },
                  "propertytypes":
                     {
                      "group":"string",
-                     "texure":"string"
+                     "texture":"string"
                     },
                  "rotation":0,
                  "type":"peak",
@@ -830,12 +830,12 @@
                  "properties":
                     {
                      "group":"static_enemy",
-                     "texure":"future_tileset"
+                     "texture":"peaks_spritesheet"
                     },
                  "propertytypes":
                     {
                      "group":"string",
-                     "texure":"string"
+                     "texture":"string"
                     },
                  "rotation":0,
                  "type":"peak",

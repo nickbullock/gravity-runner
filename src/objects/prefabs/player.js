@@ -54,8 +54,6 @@ class Player extends Prefabs {
         this.isPlayerDead = false;
         this.isJump = false;
 
-        game.add.existing(this);
-
         game.camera.follow(this);
 
         //  init controls
@@ -121,7 +119,6 @@ class Player extends Prefabs {
     }
 
     hitEnemy (player, enemy) {
-        console.log("hit");
         this.stateGame.restartLevel();
     }
 }

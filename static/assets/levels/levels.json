@@ -79,6 +79,15 @@
             "frames": 4,
             "margin": 0,
             "spacing": 0
+        },
+        "peaks_spritesheet": {
+            "type": "spritesheet",
+            "source": "static/assets/imgs/level/tileset.png",
+            "frame_width": 64,
+            "frame_height": 64,
+            "frames": 2,
+            "margin": 0,
+            "spacing": 0
         }
     },
     "groups": [

@@ -70,10 +70,20 @@
             "source": "/static/assets/imgs/level-selection/levels.png",
             "frame_width": 64,
             "frame_height": 64
+        },
+        "saw_spritesheet": {
+            "type": "spritesheet",
+            "source": "static/assets/imgs/level/saw.png",
+            "frame_width": 64,
+            "frame_height": 64,
+            "frames": 4,
+            "margin": 0,
+            "spacing": 0
         }
     },
     "groups": [
-        "players"
+        "players",
+        "static_enemy"
     ],
     "maps": {
         "level_selection": {

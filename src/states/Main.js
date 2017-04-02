@@ -1,4 +1,5 @@
 import Player from '../objects/prefabs/player';
+import StaticEnemy from '../objects/prefabs/static-enemy';
 
 /* global Phaser*/
 
@@ -32,7 +33,7 @@ class Main extends Phaser.State {
     create () {
         const game = this.game;
 
-        // game.time.advancedTiming = true;
+        game.time.advancedTiming = true;
 
         // create map layers
         let nameGroup, layerObject, tilesCollision;
@@ -78,6 +79,13 @@ class Main extends Phaser.State {
 
         game.debug.text(game.time.physicsElapsed, 32, 32);
         game.debug.text(game.time.fps || '--', 2, 14, "#00ff00");
+
+        const groupPlayers = this.groups["players"];
+
+        groupPlayers.forEach(function (member) {
+            game.debug.body(member);
+            game.debug.bodyInfo(member, 16, 24);
+        }, this);
     }
 
     createObject (object) {
@@ -91,6 +99,14 @@ class Main extends Phaser.State {
         switch (object.type) {
             case "player":
                 prefab = new Player(this, position, object.properties);
+                break;
+
+            case "saw":
+                prefab = new StaticEnemy(this, position, object.properties);
+                break;
+
+            case "peak":
+                prefab = new StaticEnemy(this, position, object.properties);
                 break;
 
             default:

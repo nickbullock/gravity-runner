@@ -14,6 +14,9 @@ class Prefabs extends Phaser.Sprite {
 
         this.stateGame = stateGame;
         this.stateGame.groups[properties.group].add(this);
+
+        console.log(this.stateGame.groups[properties.group])
+        console.log(this.stateGame.groups[properties.group].children)
     }
 }
 

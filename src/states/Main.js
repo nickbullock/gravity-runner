@@ -1,3 +1,5 @@
+"use strict";
+
 import Player from '../objects/prefabs/player';
 import StaticEnemy from '../objects/prefabs/static-enemy';
 
@@ -14,6 +16,12 @@ class Main extends Phaser.State {
      */
     init (dataLevel) {
         this.dataLevel = dataLevel;
+
+        this.dataClassPrefabs = {
+            player: Player,
+            saw: StaticEnemy,
+            peak: StaticEnemy,
+        };
 
         this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
         this.scale.pageAlignHorizontally = true;
@@ -75,56 +83,45 @@ class Main extends Phaser.State {
     }
 
     render () {
-        // const game = this.game;
-        //
-        // game.debug.text(game.time.physicsElapsed, 32, 32);
-        // game.debug.text(game.time.fps || '--', 2, 14, "#00ff00");
-        //
-        // const groupPlayers = this.groups["players"];
-        //
-        // groupPlayers.forEach(function (member) {
-        //     game.debug.body(member);
-        //     game.debug.bodyInfo(member, 16, 24);
-        // }, this);
-        //
-        // const groupStaticEnemy = this.groups["static_enemy"];
-        //
-        // groupStaticEnemy.forEach(function (member) {
-        //     game.debug.body(member);
-        // }, this);
+        const game = this.game;
+
+        game.debug.text(game.time.physicsElapsed, 32, 32);
+        game.debug.text(game.time.fps || '--', 2, 14, "#00ff00");
+
+        const groupPlayers = this.groups["players"];
+
+        groupPlayers.forEach(function (member) {
+            game.debug.body(member);
+            game.debug.bodyInfo(member, 16, 24);
+        }, this);
+
+        const groupStaticEnemy = this.groups["static_enemy"];
+
+        groupStaticEnemy.forEach(function (member) {
+            game.debug.body(member);
+        }, this);
     }
 
     createObject (object) {
-        "use strict";
-
-        let prefab;
         // tiled coordinates starts in the bottom left corner
-        const position = {"x": object.x + (this.map.tileHeight / 2), "y": object.y - (this.map.tileHeight / 2)};
+        const position = {
+            "x": object.x + (this.map.tileHeight / 2),
+            "y": object.y - (this.map.tileHeight / 2)
+        };
 
         // create object according to its type
-        switch (object.type) {
-            case "player":
-                prefab = new Player(this, position, object.properties);
-                break;
+        const classPrefab = this.dataClassPrefabs[object.type];
 
-            case "saw":
-                prefab = new StaticEnemy(this, position, object.properties);
-                break;
+        if (classPrefab) {
+            this.prefabs[object.name] = new classPrefab(this, position, object.properties);
 
-            case "peak":
-                prefab = new StaticEnemy(this, position, object.properties);
-                break;
-
-            default:
-                console.warn(`[State.Main.createObject] Not implement type object [${object.type}].`);
-                break;
+            return null;
         }
 
-        this.prefabs[object.name] = prefab;
+        console.warn(`[State.Main.createObject] Not implement type object [${object.type}].`);
     }
 
     restartLevel () {
-        "use strict";
         this.game.state.restart(true, false, this.dataLevel);
     }
 }

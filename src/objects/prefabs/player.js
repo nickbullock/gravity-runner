@@ -20,24 +20,21 @@ class Player extends Prefabs {
         game.physics.enable(this, Phaser.Physics.ARCADE, true);
 
         this.body.collideWorldBounds = true;
-        this.body.setSize(64, 64, 0, 0);
+        this.body.setSize(30, 64, 21, 0);
         this.body.gravity.y = this.gravity;
-
-        //  todo: fix animation run
-        this.animations.add('run', [0,1,2,3,4,5], 12, true);
+        
+        this.animations.add('run', [0,1,2,3,4,5,6], 12, true);
 
         this.animations.add('attack', [7,8,9,10,11,12,13,14,15,16,17,18,19], 12, true)
             .onComplete.add(() => {
                 this.animations.play('run');
             });
-
-        //  todo: fix animation gravity
+        
         this.animations.add('changeGravitySecond', [24,25,26,27], 12, true)
             .onComplete.add(() => {
                 this.animations.play('run');
             });
-
-        //  todo: fix animation gravity
+        
         this.animations.add('changeGravityFirst', [20,21,22,23], 12, true)
             .onComplete.add(() => {
                 this.scale.y = -this.scale.y;
@@ -128,9 +125,13 @@ class Player extends Prefabs {
         bloodEmitter.gravity = 500;
         bloodEmitter.minParticleScale = 1;
         bloodEmitter.maxParticleScale = 2;
+        bloodEmitter.setXSpeed(150, 400);
         bloodEmitter.start(true, 2000, null, 80);
 
         this.bloodEmitter = bloodEmitter;
+
+        enemy.tint = 0x990000;
+
         // this.stateGame.restartLevel();
     }
 

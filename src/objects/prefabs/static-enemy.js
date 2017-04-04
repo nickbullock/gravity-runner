@@ -10,6 +10,16 @@ class StaticEnemy extends Prefabs {
 
         this.body.allowGravity = false;
         this.body.setSize(64, 64, 0, 0);
+        this.body.immovable = true;
+
+        if(this.animations
+            && this.animations._frameData
+            && this.animations._frameData._frames
+            && this.animations._frameData._frames.length > 0){
+
+            this.animations.add('idle', this.animations._frameData._frames.map((frame) => frame.index), 12, true);
+            this.animations.play('idle');
+        }
 
         this.anchor.setTo(0.5);
 

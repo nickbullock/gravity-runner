@@ -1017,161 +1017,189 @@
                  "width":64,
                  "x":6784,
                  "y":896
-                }, 
+                },
                 {
+                 "gid":75,
+                 "height":32,
+                 "id":62,
+                 "name":"halfsaw",
+                 "properties":
+                    {
+                     "direction":1,
+                     "distance":600,
+                     "group":"movable_enemy",
+                     "speed":150,
+                     "texture":"halfsaw_spritesheet"
+                    },
+                 "propertytypes":
+                    {
+                     "direction":"int",
+                     "distance":"int",
+                     "group":"string",
+                     "speed":"int",
+                     "texture":"string"
+                    },
+                 "rotation":0,
+                 "type":"halfsaw",
+                 "visible":true,
+                 "width":63,
+                 "x":555,
+                 "y":832
+                },
+             {
                  "gid":75,
                  "height":32,
                  "id":54,
                  "name":"coin",
                  "properties":
-                    {
+                 {
                      "group":"coins",
                      "texture":"coin_spritesheet"
-                    },
+                 },
                  "propertytypes":
-                    {
+                 {
                      "group":"string",
                      "texture":"string"
-                    },
+                 },
                  "rotation":0,
                  "type":"coin",
                  "visible":true,
                  "width":32,
                  "x":336,
                  "y":752
-                }, 
-                {
+             },
+             {
                  "gid":75,
                  "height":32,
                  "id":55,
                  "name":"coin",
                  "properties":
-                    {
+                 {
                      "group":"coins",
                      "texture":"coin_spritesheet"
-                    },
+                 },
                  "propertytypes":
-                    {
+                 {
                      "group":"string",
                      "texture":"string"
-                    },
+                 },
                  "rotation":0,
                  "type":"coin",
                  "visible":true,
                  "width":32,
                  "x":384,
                  "y":720
-                }, 
-                {
+             },
+             {
                  "gid":75,
                  "height":32,
                  "id":56,
                  "name":"coin",
                  "properties":
-                    {
+                 {
                      "group":"coins",
                      "texture":"coin_spritesheet"
-                    },
+                 },
                  "propertytypes":
-                    {
+                 {
                      "group":"string",
                      "texture":"string"
-                    },
+                 },
                  "rotation":0,
                  "type":"coin",
                  "visible":true,
                  "width":32,
                  "x":448,
                  "y":720
-                }, 
-                {
+             },
+             {
                  "gid":75,
                  "height":32,
                  "id":57,
                  "name":"coin",
                  "properties":
-                    {
+                 {
                      "group":"coins",
                      "texture":"coin_spritesheet"
-                    },
+                 },
                  "propertytypes":
-                    {
+                 {
                      "group":"string",
                      "texture":"string"
-                    },
+                 },
                  "rotation":0,
                  "type":"coin",
                  "visible":true,
                  "width":32,
                  "x":496,
                  "y":752
-                }, 
-                {
+             },
+             {
                  "gid":75,
                  "height":32,
                  "id":58,
                  "name":"coin",
                  "properties":
-                    {
+                 {
                      "group":"coins",
                      "texture":"coin_spritesheet"
-                    },
+                 },
                  "propertytypes":
-                    {
+                 {
                      "group":"string",
                      "texture":"string"
-                    },
+                 },
                  "rotation":0,
                  "type":"coin",
                  "visible":true,
                  "width":32,
                  "x":1040,
                  "y":176
-                }, 
-                {
+             },
+             {
                  "gid":75,
                  "height":32,
                  "id":59,
                  "name":"coin",
                  "properties":
-                    {
+                 {
                      "group":"coins",
                      "texture":"coin_spritesheet"
-                    },
+                 },
                  "propertytypes":
-                    {
+                 {
                      "group":"string",
                      "texture":"string"
-                    },
+                 },
                  "rotation":0,
                  "type":"coin",
                  "visible":true,
                  "width":32,
                  "x":1104,
                  "y":176
-                }, 
-                {
+             },
+             {
                  "gid":75,
                  "height":32,
                  "id":60,
                  "name":"coin",
                  "properties":
-                    {
+                 {
                      "group":"coins",
                      "texture":"coin_spritesheet"
-                    },
+                 },
                  "propertytypes":
-                    {
+                 {
                      "group":"string",
                      "texture":"string"
-                    },
+                 },
                  "rotation":0,
                  "type":"coin",
                  "visible":true,
                  "width":32,
                  "x":1168,
                  "y":176
-                }],
+             }],
          "offsetx":32,
          "offsety":-96,
          "opacity":1,
@@ -1181,7 +1209,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":63,
+ "nextobjectid":65,
  "orientation":"orthogonal",
  "properties":
     {
@@ -1272,8 +1300,44 @@
                 }
             },
          "tilewidth":64
-        }, 
-        {
+        },
+     {
+         "columns":2,
+         "firstgid":75,
+         "image":"..\/imgs\/level\/halfsaw.png",
+         "imageheight":64,
+         "imagewidth":126,
+         "margin":0,
+         "name":"halfsaw",
+         "spacing":0,
+         "tilecount":4,
+         "tileheight":32,
+         "tiles":
+         {
+             "0":
+             {
+                 "animation":[
+                     {
+                         "duration":100,
+                         "tileid":0
+                     },
+                     {
+                         "duration":100,
+                         "tileid":1
+                     },
+                     {
+                         "duration":100,
+                         "tileid":2
+                     },
+                     {
+                         "duration":100,
+                         "tileid":3
+                     }]
+             }
+         },
+         "tilewidth":63
+     },
+     {
          "columns":6,
          "firstgid":75,
          "image":"..\/imgs\/prefabs\/coin.png",
@@ -1285,38 +1349,38 @@
          "tilecount":6,
          "tileheight":32,
          "tiles":
-            {
+         {
              "0":
-                {
+             {
                  "animation":[
-                        {
+                     {
                          "duration":100,
                          "tileid":0
-                        }, 
-                        {
+                     },
+                     {
                          "duration":100,
                          "tileid":1
-                        }, 
-                        {
+                     },
+                     {
                          "duration":100,
                          "tileid":2
-                        }, 
-                        {
+                     },
+                     {
                          "duration":100,
                          "tileid":3
-                        }, 
-                        {
+                     },
+                     {
                          "duration":100,
                          "tileid":4
-                        }, 
-                        {
+                     },
+                     {
                          "duration":100,
                          "tileid":5
-                        }]
-                }
-            },
+                     }]
+             }
+         },
          "tilewidth":32
-        }],
+     }],
  "tilewidth":64,
  "version":1,
  "width":175

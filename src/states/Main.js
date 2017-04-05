@@ -2,6 +2,7 @@
 
 import Player from '../objects/prefabs/player';
 import StaticEnemy from '../objects/prefabs/static-enemy';
+import MovableEnemy from '../objects/prefabs/movable-enemy';
 
 /* global Phaser*/
 
@@ -21,6 +22,7 @@ class Main extends Phaser.State {
             player: Player,
             saw: StaticEnemy,
             peak: StaticEnemy,
+            halfsaw: MovableEnemy
         };
 
         this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;

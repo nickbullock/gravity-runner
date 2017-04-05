@@ -92,6 +92,15 @@
         "blood": {
             "type": "image",
             "source": "static/assets/imgs/general/blood2.png"
+        },
+        "coin_spritesheet": {
+            "type": "spritesheet",
+            "source": "static/assets/imgs/prefabs/coin.png",
+            "frame_width": 32,
+            "frame_height": 32,
+            "frames": 6,
+            "margin": 0,
+            "spacing": 0
         }
     },
     "groups": [

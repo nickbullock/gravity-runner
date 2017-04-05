@@ -52,7 +52,8 @@ module.exports = {
             {test: /pixi\.js/, use: ['expose-loader?PIXI']},
             {test: /phaser-split\.js$/, use: ['expose-loader?Phaser']},
             {test: /p2\.js/, use: ['expose-loader?p2']},
-            {test: /phaser-state-transition\.js/, use: ['expose-loader?StateTransition']}
+            {test: /phaser-state-transition\.js/, use: ['expose-loader?StateTransition']},
+            {test: /lodash\.js/, use: ['expose-loader?_']}
         ]
     },
     node: {

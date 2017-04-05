@@ -115,7 +115,9 @@
     "groups": [
         "players",
         "static_enemy",
-        "movable_enemy"
+        "movable_enemy",
+        "coins",
+        "scores"
     ],
     "maps": {
         "level_selection": {

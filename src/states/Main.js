@@ -3,6 +3,8 @@
 import Player from '../objects/prefabs/player';
 import StaticEnemy from '../objects/prefabs/static-enemy';
 import MovableEnemy from '../objects/prefabs/movable-enemy';
+import Coin from '../objects/prefabs/coin';
+import Score from '../objects/prefabs/score';
 
 /* global Phaser*/
 
@@ -22,7 +24,9 @@ class Main extends Phaser.State {
             player: Player,
             saw: StaticEnemy,
             peak: StaticEnemy,
-            halfsaw: MovableEnemy
+            halfsaw: MovableEnemy,
+            coin: Coin,
+            score: Score
         };
 
         this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
@@ -85,23 +89,23 @@ class Main extends Phaser.State {
     }
 
     render () {
-        const game = this.game;
-
-        game.debug.text(game.time.physicsElapsed, 32, 32);
-        game.debug.text(game.time.fps || '--', 2, 14, "#00ff00");
-
-        const groupPlayers = this.groups["players"];
-
-        groupPlayers.forEach(function (member) {
-            game.debug.body(member);
-            game.debug.bodyInfo(member, 16, 24);
-        }, this);
-
-        const groupStaticEnemy = this.groups["static_enemy"];
-
-        groupStaticEnemy.forEach(function (member) {
-            game.debug.body(member);
-        }, this);
+        // const game = this.game;
+        //
+        // game.debug.text(game.time.physicsElapsed, 32, 32);
+        // game.debug.text(game.time.fps || '--', 2, 14, "#00ff00");
+        //
+        // const groupPlayers = this.groups["players"];
+        //
+        // groupPlayers.forEach(function (member) {
+        //     game.debug.body(member);
+        //     game.debug.bodyInfo(member, 16, 24);
+        // }, this);
+        //
+        // const groupStaticEnemy = this.groups["static_enemy"];
+        //
+        // groupStaticEnemy.forEach(function (member) {
+        //     game.debug.body(member);
+        // }, this);
     }
 
     createObject (object) {
@@ -121,6 +125,8 @@ class Main extends Phaser.State {
         }
 
         console.warn(`[State.Main.createObject] Not implement type object [${object.type}].`);
+
+        return null;
     }
 
     restartLevel () {

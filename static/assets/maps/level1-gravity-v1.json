@@ -1199,6 +1199,27 @@
                  "width":32,
                  "x":1168,
                  "y":176
+                }, 
+                {
+                 "height":64,
+                 "id":65,
+                 "name":"score",
+                 "properties":
+                    {
+                     "group":"scores",
+                     "text":"Score"
+                    },
+                 "propertytypes":
+                    {
+                     "group":"string",
+                     "text":"string"
+                    },
+                 "rotation":0,
+                 "type":"score",
+                 "visible":true,
+                 "width":224,
+                 "x":32,
+                 "y":64
                 }],
          "offsetx":32,
          "offsety":-96,
@@ -1209,7 +1230,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":65,
+ "nextobjectid":70,
  "orientation":"orthogonal",
  "properties":
     {

@@ -51,6 +51,8 @@ class Player extends Prefabs {
         this.isPlayerDead = false;
         this.isJump = false;
 
+        this.score = 0;
+
         game.camera.follow(this);
 
         //  init controls

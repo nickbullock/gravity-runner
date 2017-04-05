@@ -13,8 +13,8 @@ class Player extends Prefabs {
 
         super(stateGame, position, properties);
 
-        this.gravity = 1000;
-        this.velocityJumpY = -500;
+        this.gravity = 1500;
+        this.velocityJumpY = -800;
         this.gravityLow = false;
 
         game.physics.enable(this, Phaser.Physics.ARCADE, true);
@@ -22,7 +22,7 @@ class Player extends Prefabs {
         this.body.collideWorldBounds = true;
         this.body.setSize(30, 64, 21, 0);
         this.body.gravity.y = this.gravity;
-        
+
         this.animations.add('run', [0,1,2,3,4,5,6], 12, true);
 
         this.animations.add('attack', [7,8,9,10,11,12,13,14,15,16,17,18,19], 12, true)
@@ -50,6 +50,7 @@ class Player extends Prefabs {
         this.jumpTimer = 0;
         this.isPlayerDead = false;
         this.isJump = false;
+        this.gravityChangeTimer = 0;
 
         this.score = 0;
 
@@ -101,11 +102,16 @@ class Player extends Prefabs {
     }
 
     changeGravity() {
-        this.gravityLow = !this.gravityLow;
-        this.gravity = -this.gravity;
-        this.velocityJumpY = -this.velocityJumpY;
-        this.body.gravity.y = this.gravity;
-        this.animations.play('changeGravityFirst', null, false);
+        const game = this.game;
+
+        if(game.time.now > this.gravityChangeTimer){
+            this.gravityLow = !this.gravityLow;
+            this.gravity = -this.gravity;
+            this.velocityJumpY = -this.velocityJumpY;
+            this.body.gravity.y = this.gravity;
+            this.animations.play('changeGravityFirst', null, false);
+            this.gravityChangeTimer = game.time.now + 700;
+        }
     }
     
     checkGround () {

@@ -44,6 +44,7 @@ class Main extends Phaser.State {
         const game = this.game;
 
         game.time.advancedTiming = true;
+        game.physics.arcade.TILE_BIAS = 50;
 
         // create map layers
         let nameGroup, layerObject, tilesCollision;

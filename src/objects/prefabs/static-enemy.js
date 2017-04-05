@@ -9,7 +9,6 @@ class StaticEnemy extends Prefabs {
         game.physics.enable(this, Phaser.Physics.ARCADE, true);
 
         this.body.allowGravity = false;
-        this.body.setSize(64, 64, 0, 0);
         this.body.immovable = true;
 
         if(this.animations

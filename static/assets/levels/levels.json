@@ -80,6 +80,15 @@
             "margin": 0,
             "spacing": 0
         },
+        "halfsaw_spritesheet": {
+            "type": "spritesheet",
+            "source": "static/assets/imgs/level/halfsaw.png",
+            "frame_width": 63,
+            "frame_height": 32,
+            "frames": 4,
+            "margin": 0,
+            "spacing": 0
+        },
         "peaks_spritesheet": {
             "type": "spritesheet",
             "source": "static/assets/imgs/level/tileset.png",
@@ -96,7 +105,8 @@
     },
     "groups": [
         "players",
-        "static_enemy"
+        "static_enemy",
+        "movable_enemy"
     ],
     "maps": {
         "level_selection": {

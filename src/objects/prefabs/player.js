@@ -71,6 +71,7 @@ class Player extends Prefabs {
     update () {
         this.stateGame.game.physics.arcade.collide(this, this.stateGame.layers.LayerCollision, this.collisionCallback, null, this);
         this.stateGame.game.physics.arcade.collide(this, this.stateGame.groups.static_enemy, this.hitEnemy, null, this);
+        this.stateGame.game.physics.arcade.collide(this, this.stateGame.groups.movable_enemy, this.hitEnemy, null, this);
         this.stateGame.game.physics.arcade.collide(this.bloodEmitter, this.stateGame.layers.LayerCollision, this.bloodCollision, null, this);
 
         //  todo: add restart level after end level
@@ -112,7 +113,7 @@ class Player extends Prefabs {
 
     collisionCallback () {
         if(this.checkGround()){
-            this.body.velocity.x = 550;
+            this.body.velocity.x = 450;
         }
     }
 

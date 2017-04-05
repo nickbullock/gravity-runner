@@ -82,12 +82,20 @@
                  "properties":
                     {
                      "group":"static_enemy",
-                     "texture":"saw_spritesheet"
+                     "height":"48",
+                     "offsetX":"8",
+                     "offsetY":"8",
+                     "texture":"saw_spritesheet",
+                     "width":"48"
                     },
                  "propertytypes":
                     {
                      "group":"string",
-                     "texture":"string"
+                     "height":"string",
+                     "offsetX":"string",
+                     "offsetY":"string",
+                     "texture":"string",
+                     "width":"string"
                     },
                  "rotation":0,
                  "type":"saw",
@@ -104,12 +112,20 @@
                  "properties":
                     {
                      "group":"static_enemy",
-                     "texture":"saw_spritesheet"
+                     "height":"48",
+                     "offsetX":"8",
+                     "offsetY":"8",
+                     "texture":"saw_spritesheet",
+                     "width":"48"
                     },
                  "propertytypes":
                     {
                      "group":"string",
-                     "texture":"string"
+                     "height":"string",
+                     "offsetX":"string",
+                     "offsetY":"string",
+                     "texture":"string",
+                     "width":"string"
                     },
                  "rotation":0,
                  "type":"saw",
@@ -126,12 +142,20 @@
                  "properties":
                     {
                      "group":"static_enemy",
-                     "texture":"saw_spritesheet"
+                     "height":"48",
+                     "offsetX":"8",
+                     "offsetY":"8",
+                     "texture":"saw_spritesheet",
+                     "width":"48"
                     },
                  "propertytypes":
                     {
                      "group":"string",
-                     "texture":"string"
+                     "height":"string",
+                     "offsetX":"string",
+                     "offsetY":"string",
+                     "texture":"string",
+                     "width":"string"
                     },
                  "rotation":0,
                  "type":"saw",
@@ -148,12 +172,20 @@
                  "properties":
                     {
                      "group":"static_enemy",
-                     "texture":"saw_spritesheet"
+                     "height":"48",
+                     "offsetX":"8",
+                     "offsetY":"8",
+                     "texture":"saw_spritesheet",
+                     "width":"48"
                     },
                  "propertytypes":
                     {
                      "group":"string",
-                     "texture":"string"
+                     "height":"string",
+                     "offsetX":"string",
+                     "offsetY":"string",
+                     "texture":"string",
+                     "width":"string"
                     },
                  "rotation":0,
                  "type":"saw",
@@ -170,12 +202,20 @@
                  "properties":
                     {
                      "group":"static_enemy",
-                     "texture":"saw_spritesheet"
+                     "height":"48",
+                     "offsetX":"8",
+                     "offsetY":"8",
+                     "texture":"saw_spritesheet",
+                     "width":"48"
                     },
                  "propertytypes":
                     {
                      "group":"string",
-                     "texture":"string"
+                     "height":"string",
+                     "offsetX":"string",
+                     "offsetY":"string",
+                     "texture":"string",
+                     "width":"string"
                     },
                  "rotation":0,
                  "type":"saw",
@@ -192,12 +232,20 @@
                  "properties":
                     {
                      "group":"static_enemy",
-                     "texture":"saw_spritesheet"
+                     "height":"48",
+                     "offsetX":"8",
+                     "offsetY":"8",
+                     "texture":"saw_spritesheet",
+                     "width":"48"
                     },
                  "propertytypes":
                     {
                      "group":"string",
-                     "texture":"string"
+                     "height":"string",
+                     "offsetX":"string",
+                     "offsetY":"string",
+                     "texture":"string",
+                     "width":"string"
                     },
                  "rotation":0,
                  "type":"saw",
@@ -214,12 +262,20 @@
                  "properties":
                     {
                      "group":"static_enemy",
-                     "texture":"saw_spritesheet"
+                     "height":"48",
+                     "offsetX":"8",
+                     "offsetY":"8",
+                     "texture":"saw_spritesheet",
+                     "width":"48"
                     },
                  "propertytypes":
                     {
                      "group":"string",
-                     "texture":"string"
+                     "height":"string",
+                     "offsetX":"string",
+                     "offsetY":"string",
+                     "texture":"string",
+                     "width":"string"
                     },
                  "rotation":0,
                  "type":"saw",
@@ -236,12 +292,20 @@
                  "properties":
                     {
                      "group":"static_enemy",
-                     "texture":"saw_spritesheet"
+                     "height":"48",
+                     "offsetX":"8",
+                     "offsetY":"8",
+                     "texture":"saw_spritesheet",
+                     "width":"48"
                     },
                  "propertytypes":
                     {
                      "group":"string",
-                     "texture":"string"
+                     "height":"string",
+                     "offsetX":"string",
+                     "offsetY":"string",
+                     "texture":"string",
+                     "width":"string"
                     },
                  "rotation":0,
                  "type":"saw",
@@ -258,12 +322,20 @@
                  "properties":
                     {
                      "group":"static_enemy",
-                     "texture":"saw_spritesheet"
+                     "height":"48",
+                     "offsetX":"8",
+                     "offsetY":"8",
+                     "texture":"saw_spritesheet",
+                     "width":"48"
                     },
                  "propertytypes":
                     {
                      "group":"string",
-                     "texture":"string"
+                     "height":"string",
+                     "offsetX":"string",
+                     "offsetY":"string",
+                     "texture":"string",
+                     "width":"string"
                     },
                  "rotation":0,
                  "type":"saw",
@@ -280,12 +352,20 @@
                  "properties":
                     {
                      "group":"static_enemy",
-                     "texture":"saw_spritesheet"
+                     "height":"48",
+                     "offsetX":"8",
+                     "offsetY":"8",
+                     "texture":"saw_spritesheet",
+                     "width":"48"
                     },
                  "propertytypes":
                     {
                      "group":"string",
-                     "texture":"string"
+                     "height":"string",
+                     "offsetX":"string",
+                     "offsetY":"string",
+                     "texture":"string",
+                     "width":"string"
                     },
                  "rotation":0,
                  "type":"saw",
@@ -302,12 +382,20 @@
                  "properties":
                     {
                      "group":"static_enemy",
-                     "texture":"saw_spritesheet"
+                     "height":"48",
+                     "offsetX":"8",
+                     "offsetY":"8",
+                     "texture":"saw_spritesheet",
+                     "width":"48"
                     },
                  "propertytypes":
                     {
                      "group":"string",
-                     "texture":"string"
+                     "height":"string",
+                     "offsetX":"string",
+                     "offsetY":"string",
+                     "texture":"string",
+                     "width":"string"
                     },
                  "rotation":0,
                  "type":"saw",
@@ -324,12 +412,20 @@
                  "properties":
                     {
                      "group":"static_enemy",
-                     "texture":"saw_spritesheet"
+                     "height":"48",
+                     "offsetX":"8",
+                     "offsetY":"8",
+                     "texture":"saw_spritesheet",
+                     "width":"48"
                     },
                  "propertytypes":
                     {
                      "group":"string",
-                     "texture":"string"
+                     "height":"string",
+                     "offsetX":"string",
+                     "offsetY":"string",
+                     "texture":"string",
+                     "width":"string"
                     },
                  "rotation":0,
                  "type":"saw",
@@ -346,12 +442,20 @@
                  "properties":
                     {
                      "group":"static_enemy",
-                     "texture":"saw_spritesheet"
+                     "height":"48",
+                     "offsetX":"8",
+                     "offsetY":"8",
+                     "texture":"saw_spritesheet",
+                     "width":"48"
                     },
                  "propertytypes":
                     {
                      "group":"string",
-                     "texture":"string"
+                     "height":"string",
+                     "offsetX":"string",
+                     "offsetY":"string",
+                     "texture":"string",
+                     "width":"string"
                     },
                  "rotation":0,
                  "type":"saw",
@@ -368,12 +472,20 @@
                  "properties":
                     {
                      "group":"static_enemy",
-                     "texture":"saw_spritesheet"
+                     "height":"48",
+                     "offsetX":"8",
+                     "offsetY":"8",
+                     "texture":"saw_spritesheet",
+                     "width":"48"
                     },
                  "propertytypes":
                     {
                      "group":"string",
-                     "texture":"string"
+                     "height":"string",
+                     "offsetX":"string",
+                     "offsetY":"string",
+                     "texture":"string",
+                     "width":"string"
                     },
                  "rotation":0,
                  "type":"saw",
@@ -390,12 +502,20 @@
                  "properties":
                     {
                      "group":"static_enemy",
-                     "texture":"saw_spritesheet"
+                     "height":"48",
+                     "offsetX":"8",
+                     "offsetY":"8",
+                     "texture":"saw_spritesheet",
+                     "width":"48"
                     },
                  "propertytypes":
                     {
                      "group":"string",
-                     "texture":"string"
+                     "height":"string",
+                     "offsetX":"string",
+                     "offsetY":"string",
+                     "texture":"string",
+                     "width":"string"
                     },
                  "rotation":0,
                  "type":"saw",
@@ -412,12 +532,20 @@
                  "properties":
                     {
                      "group":"static_enemy",
-                     "texture":"saw_spritesheet"
+                     "height":"48",
+                     "offsetX":"8",
+                     "offsetY":"8",
+                     "texture":"saw_spritesheet",
+                     "width":"48"
                     },
                  "propertytypes":
                     {
                      "group":"string",
-                     "texture":"string"
+                     "height":"string",
+                     "offsetX":"string",
+                     "offsetY":"string",
+                     "texture":"string",
+                     "width":"string"
                     },
                  "rotation":0,
                  "type":"saw",
@@ -434,12 +562,20 @@
                  "properties":
                     {
                      "group":"static_enemy",
-                     "texture":"saw_spritesheet"
+                     "height":"48",
+                     "offsetX":"8",
+                     "offsetY":"8",
+                     "texture":"saw_spritesheet",
+                     "width":"48"
                     },
                  "propertytypes":
                     {
                      "group":"string",
-                     "texture":"string"
+                     "height":"string",
+                     "offsetX":"string",
+                     "offsetY":"string",
+                     "texture":"string",
+                     "width":"string"
                     },
                  "rotation":0,
                  "type":"saw",
@@ -456,12 +592,20 @@
                  "properties":
                     {
                      "group":"static_enemy",
-                     "texture":"saw_spritesheet"
+                     "height":"48",
+                     "offsetX":"8",
+                     "offsetY":"8",
+                     "texture":"saw_spritesheet",
+                     "width":"48"
                     },
                  "propertytypes":
                     {
                      "group":"string",
-                     "texture":"string"
+                     "height":"string",
+                     "offsetX":"string",
+                     "offsetY":"string",
+                     "texture":"string",
+                     "width":"string"
                     },
                  "rotation":0,
                  "type":"saw",
@@ -478,12 +622,20 @@
                  "properties":
                     {
                      "group":"static_enemy",
-                     "texture":"saw_spritesheet"
+                     "height":"48",
+                     "offsetX":"8",
+                     "offsetY":"8",
+                     "texture":"saw_spritesheet",
+                     "width":"48"
                     },
                  "propertytypes":
                     {
                      "group":"string",
-                     "texture":"string"
+                     "height":"string",
+                     "offsetX":"string",
+                     "offsetY":"string",
+                     "texture":"string",
+                     "width":"string"
                     },
                  "rotation":0,
                  "type":"saw",
@@ -500,12 +652,20 @@
                  "properties":
                     {
                      "group":"static_enemy",
-                     "texture":"saw_spritesheet"
+                     "height":"48",
+                     "offsetX":"8",
+                     "offsetY":"8",
+                     "texture":"saw_spritesheet",
+                     "width":"48"
                     },
                  "propertytypes":
                     {
                      "group":"string",
-                     "texture":"string"
+                     "height":"string",
+                     "offsetX":"string",
+                     "offsetY":"string",
+                     "texture":"string",
+                     "width":"string"
                     },
                  "rotation":0,
                  "type":"saw",
@@ -522,12 +682,20 @@
                  "properties":
                     {
                      "group":"static_enemy",
-                     "texture":"saw_spritesheet"
+                     "height":"48",
+                     "offsetX":"8",
+                     "offsetY":"8",
+                     "texture":"saw_spritesheet",
+                     "width":"48"
                     },
                  "propertytypes":
                     {
                      "group":"string",
-                     "texture":"string"
+                     "height":"string",
+                     "offsetX":"string",
+                     "offsetY":"string",
+                     "texture":"string",
+                     "width":"string"
                     },
                  "rotation":0,
                  "type":"saw",
@@ -544,12 +712,20 @@
                  "properties":
                     {
                      "group":"static_enemy",
-                     "texture":"saw_spritesheet"
+                     "height":"48",
+                     "offsetX":"8",
+                     "offsetY":"8",
+                     "texture":"saw_spritesheet",
+                     "width":"48"
                     },
                  "propertytypes":
                     {
                      "group":"string",
-                     "texture":"string"
+                     "height":"string",
+                     "offsetX":"string",
+                     "offsetY":"string",
+                     "texture":"string",
+                     "width":"string"
                     },
                  "rotation":0,
                  "type":"saw",
@@ -566,40 +742,26 @@
                  "properties":
                     {
                      "group":"static_enemy",
-                     "texture":"saw_spritesheet"
+                     "height":"48",
+                     "offsetX":"8",
+                     "offsetY":"8",
+                     "texture":"saw_spritesheet",
+                     "width":"48"
                     },
                  "propertytypes":
                     {
                      "group":"string",
-                     "texture":"string"
+                     "height":"string",
+                     "offsetX":"string",
+                     "offsetY":"string",
+                     "texture":"string",
+                     "width":"string"
                     },
                  "rotation":0,
                  "type":"saw",
                  "visible":true,
                  "width":64,
-                 "x":9408,
-                 "y":192
-                }, 
-                {
-                 "gid":73,
-                 "height":64,
-                 "id":40,
-                 "name":"saw",
-                 "properties":
-                    {
-                     "group":"static_enemy",
-                     "texture":"saw_spritesheet"
-                    },
-                 "propertytypes":
-                    {
-                     "group":"string",
-                     "texture":"string"
-                    },
-                 "rotation":0,
-                 "type":"saw",
-                 "visible":true,
-                 "width":64,
-                 "x":9664,
+                 "x":9344,
                  "y":192
                 }, 
                 {
@@ -610,12 +772,20 @@
                  "properties":
                     {
                      "group":"static_enemy",
-                     "texture":"saw_spritesheet"
+                     "height":"48",
+                     "offsetX":"8",
+                     "offsetY":"8",
+                     "texture":"saw_spritesheet",
+                     "width":"48"
                     },
                  "propertytypes":
                     {
                      "group":"string",
-                     "texture":"string"
+                     "height":"string",
+                     "offsetX":"string",
+                     "offsetY":"string",
+                     "texture":"string",
+                     "width":"string"
                     },
                  "rotation":0,
                  "type":"saw",
@@ -627,39 +797,25 @@
                 {
                  "gid":73,
                  "height":64,
-                 "id":42,
-                 "name":"saw",
-                 "properties":
-                    {
-                     "group":"static_enemy",
-                     "texture":"saw_spritesheet"
-                    },
-                 "propertytypes":
-                    {
-                     "group":"string",
-                     "texture":"string"
-                    },
-                 "rotation":0,
-                 "type":"saw",
-                 "visible":true,
-                 "width":64,
-                 "x":9856,
-                 "y":832
-                }, 
-                {
-                 "gid":73,
-                 "height":64,
                  "id":43,
                  "name":"saw",
                  "properties":
                     {
                      "group":"static_enemy",
-                     "texture":"saw_spritesheet"
+                     "height":"48",
+                     "offsetX":"8",
+                     "offsetY":"8",
+                     "texture":"saw_spritesheet",
+                     "width":"48"
                     },
                  "propertytypes":
                     {
                      "group":"string",
-                     "texture":"string"
+                     "height":"string",
+                     "offsetX":"string",
+                     "offsetY":"string",
+                     "texture":"string",
+                     "width":"string"
                     },
                  "rotation":0,
                  "type":"saw",
@@ -671,39 +827,25 @@
                 {
                  "gid":73,
                  "height":64,
-                 "id":44,
-                 "name":"saw",
-                 "properties":
-                    {
-                     "group":"static_enemy",
-                     "texture":"saw_spritesheet"
-                    },
-                 "propertytypes":
-                    {
-                     "group":"string",
-                     "texture":"string"
-                    },
-                 "rotation":0,
-                 "type":"saw",
-                 "visible":true,
-                 "width":64,
-                 "x":10496,
-                 "y":192
-                }, 
-                {
-                 "gid":73,
-                 "height":64,
                  "id":45,
                  "name":"saw",
                  "properties":
                     {
                      "group":"static_enemy",
-                     "texture":"saw_spritesheet"
+                     "height":"48",
+                     "offsetX":"8",
+                     "offsetY":"8",
+                     "texture":"saw_spritesheet",
+                     "width":"48"
                     },
                  "propertytypes":
                     {
                      "group":"string",
-                     "texture":"string"
+                     "height":"string",
+                     "offsetX":"string",
+                     "offsetY":"string",
+                     "texture":"string",
+                     "width":"string"
                     },
                  "rotation":0,
                  "type":"saw",
@@ -720,12 +862,20 @@
                  "properties":
                     {
                      "group":"static_enemy",
-                     "texture":"saw_spritesheet"
+                     "height":"48",
+                     "offsetX":"8",
+                     "offsetY":"8",
+                     "texture":"saw_spritesheet",
+                     "width":"48"
                     },
                  "propertytypes":
                     {
                      "group":"string",
-                     "texture":"string"
+                     "height":"string",
+                     "offsetX":"string",
+                     "offsetY":"string",
+                     "texture":"string",
+                     "width":"string"
                     },
                  "rotation":0,
                  "type":"saw",
@@ -742,12 +892,20 @@
                  "properties":
                     {
                      "group":"static_enemy",
-                     "texture":"saw_spritesheet"
+                     "height":"48",
+                     "offsetX":"8",
+                     "offsetY":"8",
+                     "texture":"saw_spritesheet",
+                     "width":"48"
                     },
                  "propertytypes":
                     {
                      "group":"string",
-                     "texture":"string"
+                     "height":"string",
+                     "offsetX":"string",
+                     "offsetY":"string",
+                     "texture":"string",
+                     "width":"string"
                     },
                  "rotation":0,
                  "type":"saw",
@@ -764,12 +922,20 @@
                  "properties":
                     {
                      "group":"static_enemy",
-                     "texture":"saw_spritesheet"
+                     "height":"48",
+                     "offsetX":"8",
+                     "offsetY":"8",
+                     "texture":"saw_spritesheet",
+                     "width":"48"
                     },
                  "propertytypes":
                     {
                      "group":"string",
-                     "texture":"string"
+                     "height":"string",
+                     "offsetX":"string",
+                     "offsetY":"string",
+                     "texture":"string",
+                     "width":"string"
                     },
                  "rotation":0,
                  "type":"saw",
@@ -786,12 +952,20 @@
                  "properties":
                     {
                      "group":"static_enemy",
-                     "texture":"saw_spritesheet"
+                     "height":"48",
+                     "offsetX":"8",
+                     "offsetY":"8",
+                     "texture":"saw_spritesheet",
+                     "width":"48"
                     },
                  "propertytypes":
                     {
                      "group":"string",
-                     "texture":"string"
+                     "height":"string",
+                     "offsetX":"string",
+                     "offsetY":"string",
+                     "texture":"string",
+                     "width":"string"
                     },
                  "rotation":0,
                  "type":"saw",

@@ -1,3 +1,5 @@
+"use strict";
+
 import Player from '../objects/prefabs/player';
 import StaticEnemy from '../objects/prefabs/static-enemy';
 import MovableEnemy from '../objects/prefabs/movable-enemy';
@@ -15,6 +17,13 @@ class Main extends Phaser.State {
      */
     init (dataLevel) {
         this.dataLevel = dataLevel;
+
+        this.dataClassPrefabs = {
+            player: Player,
+            saw: StaticEnemy,
+            peak: StaticEnemy,
+            halfsaw: MovableEnemy
+        };
 
         this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
         this.scale.pageAlignHorizontally = true;
@@ -96,40 +105,25 @@ class Main extends Phaser.State {
     }
 
     createObject (object) {
-        "use strict";
-
-        let prefab;
         // tiled coordinates starts in the bottom left corner
-        const position = {"x": object.x + (this.map.tileHeight / 2), "y": object.y - (this.map.tileHeight / 2)};
+        const position = {
+            "x": object.x + (this.map.tileHeight / 2),
+            "y": object.y - (this.map.tileHeight / 2)
+        };
 
         // create object according to its type
-        switch (object.type) {
-            case "player":
-                prefab = new Player(this, position, object.properties);
-                break;
+        const classPrefab = this.dataClassPrefabs[object.type];
 
-            case "saw":
-                prefab = new StaticEnemy(this, position, object.properties);
-                break;
+        if (classPrefab) {
+            this.prefabs[object.name] = new classPrefab(this, position, object.properties);
 
-            case "halfsaw":
-                prefab = new MovableEnemy(this, position, object.properties);
-                break;
-
-            case "peak":
-                prefab = new StaticEnemy(this, position, object.properties);
-                break;
-
-            default:
-                console.warn(`[State.Main.createObject] Not implement type object [${object.type}].`);
-                break;
+            return null;
         }
 
-        this.prefabs[object.name] = prefab;
+        console.warn(`[State.Main.createObject] Not implement type object [${object.type}].`);
     }
 
     restartLevel () {
-        "use strict";
         this.game.state.restart(true, false, this.dataLevel);
     }
 }

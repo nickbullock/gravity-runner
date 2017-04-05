@@ -8,8 +8,6 @@ class MovableEnemy extends Prefabs {
 
         game.physics.enable(this, Phaser.Physics.ARCADE, true);
 
-        console.log(properties)
-
         this.body.immovable = true;
         this.direction = properties.direction;
         this.distance = properties.distance;

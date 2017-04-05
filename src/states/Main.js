@@ -86,6 +86,11 @@ class Main extends Phaser.State {
                 this.map.objects[layerObject].forEach(this.createObject, this);
             }
         }
+
+        const buttonRestart = game.input.keyboard
+            .addKey(Phaser.Keyboard.ESC);
+
+        buttonRestart.onDown.add(this.restartLevel, this);
     }
 
     render () {
@@ -130,7 +135,10 @@ class Main extends Phaser.State {
     }
 
     restartLevel () {
-        this.game.state.restart(true, false, this.dataLevel);
+        if (!this.prefabs.player.alive) {
+            this.game.state.restart(true, false, this.dataLevel);
+            this.game.paused = false;
+        }
     }
 }
 

@@ -20,7 +20,7 @@ class Player extends Prefabs {
         game.physics.enable(this, Phaser.Physics.ARCADE, true);
 
         this.body.collideWorldBounds = true;
-        this.body.setSize(30, 64, 21, 0);
+        this.body.setSize(30, 52, 21, 5);
         this.body.gravity.y = this.gravity;
 
         this.animations.add('run', [0,1,2,3,4,5,6], 12, true);
@@ -128,16 +128,14 @@ class Player extends Prefabs {
     hitEnemy (player, enemy) {
         player.damage(1);
 
-        const bloodEmitter = this.game.add.emitter(player.x, player.y - 10, 80);
+        this.bloodEmitter = this.game.add.emitter(player.x, player.y - 10, 80);
 
-        bloodEmitter.makeParticles('blood');
-        bloodEmitter.gravity = 500;
-        bloodEmitter.minParticleScale = 1;
-        bloodEmitter.maxParticleScale = 2;
-        bloodEmitter.setXSpeed(150, 400);
-        bloodEmitter.start(true, 2000, null, 80);
-
-        this.bloodEmitter = bloodEmitter;
+        this.bloodEmitter.makeParticles('blood');
+        this.bloodEmitter.gravity = 500;
+        this.bloodEmitter.minParticleScale = 1;
+        this.bloodEmitter.maxParticleScale = 2;
+        this.bloodEmitter.setXSpeed(150, 400);
+        this.bloodEmitter.start(true, 2000, null, 80);
 
         enemy.tint = 0x990000;
 

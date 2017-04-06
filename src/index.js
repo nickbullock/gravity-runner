@@ -4,7 +4,6 @@ import GameTitle from './states/GameTitle';
 import Main from './states/Main';
 import Menu from './states/Menu';
 import Levels from './states/LevelsState';
-import GameOver from './states/GameOver';
 
 class Game extends Phaser.Game {
 
@@ -18,7 +17,6 @@ class Game extends Phaser.Game {
         this.state.add('Menu', Menu, false);
         this.state.add('LevelsState', Levels, false);
         this.state.add('Main', Main, false);
-        this.state.add('GameOver', GameOver, false);
 
         this.state.start('Boot', null, null, true, false, "/static/assets/levels/levels.json");
     }

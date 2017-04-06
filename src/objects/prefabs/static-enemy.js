@@ -11,8 +11,10 @@ class StaticEnemy extends Prefabs {
         const {width=64, height=64, offsetX=0, offsetY=0} = properties;
 
         this.body.allowGravity = false;
-        this.body.setSize(width, height, offsetX, offsetY);
+        // this.body.setSize(width, height, offsetX, offsetY);
+        this.body.setCircle(32);
         this.body.immovable = true;
+        this.anchor.setTo(0.5, 0.5);
 
         if(this.animations
             && this.animations._frameData

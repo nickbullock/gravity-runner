@@ -4,7 +4,8 @@ import Player from '../objects/prefabs/player';
 import StaticEnemy from '../objects/prefabs/static-enemy';
 import MovableEnemy from '../objects/prefabs/movable-enemy';
 import Coin from '../objects/prefabs/coin';
-import Score from '../objects/prefabs/score';
+import Score from '../objects/other/score';
+import Background from '../objects/other/background';
 
 /* global Phaser*/
 
@@ -25,13 +26,10 @@ class Main extends Phaser.State {
             saw: StaticEnemy,
             peak: StaticEnemy,
             halfsaw: MovableEnemy,
+            background: Background,
             coin: Coin,
             score: Score
         };
-
-        this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-        this.scale.pageAlignHorizontally = true;
-        this.scale.pageAlignVertically = true;
 
         // start physics system
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -54,6 +52,11 @@ class Main extends Phaser.State {
         let nameGroup, layerObject, tilesCollision;
 
         this.layers = {};
+        this.map.images.forEach(function (image) {
+            const position = {x: 0, y: 0};
+
+            new Background(game, position, image.properties);
+        }, this);
         this.map.layers.forEach(function (layer) {
             this.layers[layer.name] = this.map.createLayer(layer.name);
 

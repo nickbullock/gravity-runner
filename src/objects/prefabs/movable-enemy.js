@@ -15,7 +15,7 @@ class MovableEnemy extends Prefabs {
         this.previousX = this.x;
         this.body.velocity.x = this.direction * this.speed;
 
-        this.anchor.setTo(0.5);
+        // this.anchor.setTo(0.5);
 
         if(this.animations
             && this.animations._frameData

@@ -17,14 +17,14 @@ class Coin extends Prefabs {
         this.body.setSize(width, height, offsetX, offsetY);
         this.body.immovable = true;
 
-        // if(this.animations
-        //     && this.animations._frameData
-        //     && this.animations._frameData._frames
-        //     && this.animations._frameData._frames.length > 0){
-        //
-        //     this.animations.add('idle', this.animations._frameData._frames.map((frame) => frame.index), 12, true);
-        //     this.animations.play('idle');
-        // }
+        if(this.animations
+            && this.animations._frameData
+            && this.animations._frameData._frames
+            && this.animations._frameData._frames.length > 0){
+
+            this.animations.add('idle', this.animations._frameData._frames.map((frame) => frame.index), 12, true);
+            this.animations.play('idle');
+        }
 
         this.anchor.setTo(0.5);
 

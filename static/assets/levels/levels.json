@@ -36,7 +36,7 @@
         },
         "bg": {
             "type": "image",
-            "source": "static/assets/imgs/level/BG.png"
+            "source": "static/assets/imgs/level/city_background_night.png"
         },
         "future": {
             "type": "bitmapFont",
@@ -117,7 +117,8 @@
         "static_enemy",
         "movable_enemy",
         "coins",
-        "scores"
+        "scores",
+        "backgrounds"
     ],
     "maps": {
         "level_selection": {

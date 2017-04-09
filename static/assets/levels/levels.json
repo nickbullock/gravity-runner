@@ -110,6 +110,14 @@
             "frames": 6,
             "margin": 0,
             "spacing": 0
+        },
+        "game_over_panel": {
+            "type": "image",
+            "source": "static/assets/imgs/menu/metalPanel_blue.png"
+        },
+        "return": {
+            "type": "image",
+            "source": "static/assets/imgs/menu/return.png"
         }
     },
     "groups": [

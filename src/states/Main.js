@@ -6,6 +6,7 @@ import MovableEnemy from '../objects/prefabs/movable-enemy';
 import Coin from '../objects/prefabs/coin';
 import Score from '../objects/other/score';
 import Background from '../objects/other/background';
+import GameOverPanel from '../objects/other/game-over-panel';
 
 /* global Phaser*/
 
@@ -19,7 +20,11 @@ class Main extends Phaser.State {
      * JSON config tiles map
      */
     init (dataLevel) {
+
+        this.game.scale.setMaximum();
+        this.game.scale.updateLayout(true);
         this.dataLevel = dataLevel;
+        this.gameOver = false;
 
         this.dataClassPrefabs = {
             player: Player,
@@ -97,13 +102,12 @@ class Main extends Phaser.State {
         buttonRestart.onDown.add(this.restartLevel, this);
     }
 
-    // update () {
-    //     if(!this.prefabs.player.alive ||){
-    //         setTimeout(
-    //             () =>
-    //         )
-    //     }
-    // }
+    update() {
+        if (!this.prefabs.player.alive && !this.gameOver) {
+            this.gameOver = true;
+            this.gameOverPanel = new GameOverPanel(this.game, 'game_over_panel', this.prefabs.score, this.restartLevel.bind(this));
+        }
+    }
 
     render () {
         const game = this.game;

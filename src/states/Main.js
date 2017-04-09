@@ -57,11 +57,15 @@ class Main extends Phaser.State {
         let nameGroup, layerObject, tilesCollision;
 
         this.layers = {};
+
+        //  create background
         this.map.images.forEach(function (image) {
             const position = {x: 0, y: 0};
 
-            new Background(game, position, image.properties);
+            new Background(this, position, image.properties);
         }, this);
+
+        //  create layers object, collision
         this.map.layers.forEach(function (layer) {
             this.layers[layer.name] = this.map.createLayer(layer.name);
 

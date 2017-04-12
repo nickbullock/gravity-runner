@@ -43,7 +43,15 @@ class Player extends Prefabs {
 
         this.animations.play('run');
 
-        this.body.velocity.x = 450;
+        this.velocityBase = 450;
+        this.body.velocity.x = this.velocityBase;
+
+        this.countAcceleration = 0;
+        this.totalAcceleration = 450;
+        this.cooldownAcceleration = 5000;
+        this.velocityAcceleration = this.plot();
+        this.countVelocityAccelerationChank = this.velocityAcceleration.length - 1;
+
         this.anchor.setTo(0.5, 0.5);
 
         this.jumpCount = 0;
@@ -61,10 +69,12 @@ class Player extends Prefabs {
         jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         gravityButton = game.input.keyboard.addKey(Phaser.Keyboard.C);
         attackButton = game.input.keyboard.addKey(Phaser.Keyboard.V);
+        this.accelerationButton = game.input.keyboard.addKey(Phaser.Keyboard.B);
 
         jumpButton.onDown.add(this.jump, this);
         gravityButton.onDown.add(this.changeGravity, this);
         attackButton.onDown.add(this.attack, this);
+        this.accelerationButton.onDown.add(this.accelerationPlayer, this);
 
         game.input.onTap.add(this.jump, this);
 
@@ -77,7 +87,7 @@ class Player extends Prefabs {
         this.stateGame.game.physics.arcade.collide(this, this.stateGame.groups.movable_enemy, this.hitEnemy, null, this);
         this.stateGame.game.physics.arcade.collide(this.bloodEmitter, this.stateGame.layers.LayerCollision, this.bloodCollision, null, this);
 
-        //  todo: add restart level after end level
+        this.changeVelocity()
     }
 
     jump(pointer, doubleTap) {
@@ -121,7 +131,7 @@ class Player extends Prefabs {
 
     collisionCallback () {
         if(this.checkGround()){
-            this.body.velocity.x = 450;
+            this.body.velocity.x = this.velocityBase;
         }
     }
 
@@ -144,6 +154,72 @@ class Player extends Prefabs {
 
     bloodCollision (particle, layer) {
         particle.body.velocity.x = 0;
+    }
+
+    accelerationPlayer () {
+        //  Не запускаем, если уже включена
+        if (this.isAcceleration) {
+            return null;
+        }
+
+        this.isAcceleration = true;
+        this.isRiseAcceleration = true;
+
+        // activate the cooldown animation
+        const pie = this.stateGame.prefabs.icon_acceleration;
+
+        pie.progress = 0;
+
+        const tween = this.stateGame.game.add.tween(pie)
+            .to({progress: 1}, this.cooldownAcceleration, Phaser.Easing.Quadratic.InOut, true, 0);
+        tween.onComplete.add(() => {
+            this.isAcceleration = false;
+        });
+    }
+
+    changeVelocity () {
+        if (!this.isAcceleration) {
+            return null;
+        }
+
+        if (this.isRiseAcceleration) {
+            if(this.countAcceleration < (this.countVelocityAccelerationChank)) {
+                const velosity = this.velocityBase + this.velocityAcceleration[this.countAcceleration++];
+
+                this.body.velocity.x = velosity;
+            } else {
+                this.isRiseAcceleration = false;
+            }
+        } else {
+            if(this.countAcceleration > 0) {
+                const velosity = this.velocityBase + this.velocityAcceleration[this.countAcceleration--];
+
+                this.body.velocity.x = velosity;
+            } else {
+                this.body.velocity.x = this.velocityBase;
+            }
+        }
+    }
+
+    /**
+     * Расчет значений увеличения скорости при ускорении
+     *
+     * @return {Array}
+     */
+    plot () {
+        const stepVelocityAcceleration = 1/25;
+        const velocityGrowAcceleration = [50, 150, 300, 380, 420, 440, 450];
+        const velocityAcceleration = [];
+
+        const math = this.stateGame.game.math;
+
+        for (let i = 0; i <= 1; i += stepVelocityAcceleration){
+            const velocity = ~~math.linearInterpolation(velocityGrowAcceleration, i);
+
+            velocityAcceleration.push(velocity);
+        }
+
+        return velocityAcceleration;
     }
 }
 

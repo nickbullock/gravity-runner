@@ -7,6 +7,7 @@ import Coin from '../objects/prefabs/coin';
 import Score from '../objects/other/score';
 import Background from '../objects/other/background';
 import GameOverPanel from '../objects/other/game-over-panel';
+import PieProgress from '../objects/icon/ability';
 
 /* global Phaser*/
 
@@ -33,7 +34,8 @@ class Main extends Phaser.State {
             halfsaw: MovableEnemy,
             background: Background,
             coin: Coin,
-            score: Score
+            score: Score,
+            icon: PieProgress
         };
 
         // start physics system

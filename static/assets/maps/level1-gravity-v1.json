@@ -1234,6 +1234,26 @@
                  "width":224,
                  "x":32,
                  "y":64
+                }, 
+                {
+                 "ellipse":true,
+                 "height":64,
+                 "id":74,
+                 "name":"icon_acceleration",
+                 "properties":
+                    {
+                     "group":"icons"
+                    },
+                 "propertytypes":
+                    {
+                     "group":"string"
+                    },
+                 "rotation":0,
+                 "type":"icon",
+                 "visible":true,
+                 "width":64,
+                 "x":320,
+                 "y":64
                 }],
          "offsetx":32,
          "offsety":-96,
@@ -1244,7 +1264,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":74,
+ "nextobjectid":75,
  "orientation":"orthogonal",
  "properties":
     {

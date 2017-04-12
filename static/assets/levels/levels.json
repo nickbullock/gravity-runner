@@ -126,7 +126,8 @@
         "movable_enemy",
         "coins",
         "scores",
-        "backgrounds"
+        "backgrounds",
+        "icons"
     ],
     "maps": {
         "level_selection": {

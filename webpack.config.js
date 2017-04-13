@@ -9,6 +9,7 @@ const phaser = path.join(phaserModule, 'build/custom/phaser-split.js');
 const phaserStateTransition = path.join(phaserStateTransitionModule, 'dist/phaser-state-transition.js');
 const pixi = path.join(phaserModule, 'build/custom/pixi.js');
 const p2 = path.join(phaserModule, 'build/custom/p2.js');
+const lodash = path.join(__dirname, '/node_modules/lodash/');
 
 const definePlugin = new webpack.DefinePlugin({
     __DEV__: JSON.stringify(JSON.parse(process.env.BUILD_DEV || 'true'))
@@ -20,7 +21,7 @@ module.exports = {
             'babel-polyfill',
             path.resolve(__dirname, 'src/index.js')
         ],
-        vendor: ['pixi', 'p2', 'phaser', 'webfontloader', 'phaser-state-transition']
+        vendor: ['pixi', 'p2', 'phaser', 'webfontloader', 'phaser-state-transition', 'lodash']
     },
     devtool: 'cheap-source-map',
     output: {
@@ -66,6 +67,7 @@ module.exports = {
             'phaser': phaser,
             'pixi': pixi,
             'p2': p2,
+            '_': lodash,
             'StateTransition': phaserStateTransition
         }
     }

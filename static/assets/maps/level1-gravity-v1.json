@@ -1064,11 +1064,13 @@
                  "properties":
                     {
                      "group":"coins",
+                     "score":20,
                      "texture":"coin_spritesheet"
                     },
                  "propertytypes":
                     {
                      "group":"string",
+                     "score":"int",
                      "texture":"string"
                     },
                  "rotation":0,
@@ -1086,11 +1088,13 @@
                  "properties":
                     {
                      "group":"coins",
+                     "score":20,
                      "texture":"coin_spritesheet"
                     },
                  "propertytypes":
                     {
                      "group":"string",
+                     "score":"int",
                      "texture":"string"
                     },
                  "rotation":0,
@@ -1108,11 +1112,13 @@
                  "properties":
                     {
                      "group":"coins",
+                     "score":20,
                      "texture":"coin_spritesheet"
                     },
                  "propertytypes":
                     {
                      "group":"string",
+                     "score":"int",
                      "texture":"string"
                     },
                  "rotation":0,
@@ -1130,11 +1136,13 @@
                  "properties":
                     {
                      "group":"coins",
+                     "score":20,
                      "texture":"coin_spritesheet"
                     },
                  "propertytypes":
                     {
                      "group":"string",
+                     "score":"int",
                      "texture":"string"
                     },
                  "rotation":0,
@@ -1152,11 +1160,13 @@
                  "properties":
                     {
                      "group":"coins",
+                     "score":20,
                      "texture":"coin_spritesheet"
                     },
                  "propertytypes":
                     {
                      "group":"string",
+                     "score":"int",
                      "texture":"string"
                     },
                  "rotation":0,
@@ -1174,11 +1184,13 @@
                  "properties":
                     {
                      "group":"coins",
+                     "score":20,
                      "texture":"coin_spritesheet"
                     },
                  "propertytypes":
                     {
                      "group":"string",
+                     "score":"int",
                      "texture":"string"
                     },
                  "rotation":0,
@@ -1196,11 +1208,13 @@
                  "properties":
                     {
                      "group":"coins",
+                     "score":20,
                      "texture":"coin_spritesheet"
                     },
                  "propertytypes":
                     {
                      "group":"string",
+                     "score":"int",
                      "texture":"string"
                     },
                  "rotation":0,

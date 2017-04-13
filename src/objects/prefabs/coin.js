@@ -1,3 +1,5 @@
+/* global _, Phaser */
+
 import Prefabs from "./prefabs";
 
 class Coin extends Prefabs {
@@ -17,13 +19,14 @@ class Coin extends Prefabs {
         this.body.setSize(width, height, offsetX, offsetY);
         this.body.immovable = true;
 
-        if(this.animations
-            && this.animations._frameData
-            && this.animations._frameData._frames
-            && this.animations._frameData._frames.length > 0){
+        const listAnimationIndex = _.get(this, "animations._frameData._frames");
 
-            this.animations.add('idle', this.animations._frameData._frames.map((frame) => frame.index), 12, true);
-            this.animations.play('idle');
+        if(Array.isArray(listAnimationIndex)){
+            const {frames=12} = properties;
+
+            this.animations
+                .add('idle', listAnimationIndex.map((frame) => frame.index), frames, true)
+                .play();
         }
 
         this.anchor.setTo(0.5);

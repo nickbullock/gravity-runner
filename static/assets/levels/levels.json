@@ -41,7 +41,12 @@
         "future": {
             "type": "bitmapFont",
             "source": "static/assets/fonts/bitmap/future/future.png",
-            "atlasURL": "static/assets/fonts/bitmap/future/future.fnt"
+            "atlasURL": "static/assets/fonts/bitmap/future/future.xml"
+        },
+        "mecha": {
+            "type": "bitmapFont",
+            "source": "static/assets/fonts/bitmap/mecha/mecha.png",
+            "atlasURL": "static/assets/fonts/bitmap/mecha/mecha.fnt"
         },
         "click": {
             "type": "audio",

@@ -1,40 +1,32 @@
-/* global Phaser*/
 
-/**
- * @class Preload
- */
 class Preload extends Phaser.State {
+
     preload() {
         const game = this.game;
 
-        game.stage.backgroundColor = '#ffffff';
-
-        const text = game.add.text(game.world.centerX, game.world.centerY, 'Loading...');
-
-        text.anchor.setTo(0.5, 0.5);
-
         //  load assets
         this.loadAssets(this.game.dataConfigGame["assets"]);
-
-        game.load.onFileComplete.add(this.showProgress.bind(null, text), this);
-        game.load.onLoadComplete.add(this.startGame, this);
+        this.game.stage.backgroundColor = '#000000';
+        game.load.onLoadComplete.add(() => setTimeout(() => this.startGame(), game.deviceConfig.preload.startTimeout));
     }
 
-    showProgress (text, progress) {
-        text.setText("Loading: " + progress + "%");
+    create() {
+        const brusGameText = this.game.add.bitmapText(this.game.world.centerX,
+            this.game.world.centerY, 'mecha', 'brus games', this.game.deviceConfig.preload.fontSize);
+        const esc = this.game.input.keyboard.addKey(Phaser.Keyboard.ESC);
+
+        brusGameText.anchor.set(0.5, 0.5);
+
+        esc.onDown.add(() =>  {
+            // clearTimeout(timerStartMainState);
+            this.game.state.start(
+                "LevelsState",
+                Phaser.Plugin.StateTransition.Out.SlideLeft,
+                Phaser.Plugin.StateTransition.In.SlideLeft
+            )
+        }, this);
     }
 
-    startGame () {
-        const game = this.game;
-
-        game.load.onFileComplete.dispose();
-        game.load.onLoadComplete.dispose();
-
-        game.state.start("GameTitle",
-            Phaser.Plugin.StateTransition.Out.SlideLeft,
-            Phaser.Plugin.StateTransition.In.SlideLeft
-        );
-    }
 
     /**
      *
@@ -81,6 +73,18 @@ class Preload extends Phaser.State {
 
         return null;
     }
+
+    startGame() {
+        const game = this.game;
+
+        game.load.onLoadComplete.dispose();
+
+        game.state.start("Menu",
+            Phaser.Plugin.StateTransition.Out.SlideLeft,
+            Phaser.Plugin.StateTransition.In.SlideLeft
+        );
+    }
+
 }
 
 export default Preload;

@@ -1,0 +1,20 @@
+{
+  "mobile": {
+    "preload": {
+      "fontSize": 100,
+      "startTimeout": 2000
+    },
+    "menu": {
+
+    }
+  },
+  "desktop": {
+    "preload": {
+      "fontSize": 64,
+      "startTimeout": 2000
+    },
+    "menu": {
+
+    }
+  }
+}

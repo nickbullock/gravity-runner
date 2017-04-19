@@ -1,6 +1,5 @@
 import Boot from './states/Boot';
 import Preload from './states/Preload';
-import GameTitle from './states/GameTitle';
 import Main from './states/Main';
 import Menu from './states/Menu';
 import Levels from './states/LevelsState';
@@ -13,7 +12,6 @@ class Game extends Phaser.Game {
 
         this.state.add('Boot', Boot, false);
         this.state.add('Preload', Preload, false);
-        this.state.add('GameTitle', GameTitle, false);
         this.state.add('Menu', Menu, false);
         this.state.add('LevelsState', Levels, false);
         this.state.add('Main', Main, false);
@@ -22,4 +20,8 @@ class Game extends Phaser.Game {
     }
 }
 
-new Game();
+
+window.onload = function(){
+    new Game();
+};
+

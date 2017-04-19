@@ -1,4 +1,7 @@
 class Menu extends Phaser.State {
+    preload() {
+        this.game.stage.backgroundColor = '#ffffff';
+    }
 
     create() {
 

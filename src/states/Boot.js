@@ -13,8 +13,8 @@ class Boot extends Phaser.State {
 
         this.scale.pageAlignHorizontally = true;
 
-        Phaser.Plugin.StateTransition.Out.SlideLeft.duration = 1000;
-        Phaser.Plugin.StateTransition.In.SlideLeft.duration = 1000;
+        Phaser.Plugin.StateTransition.Out.SlideLeft.duration = 500;
+        Phaser.Plugin.StateTransition.In.SlideLeft.duration = 500;
         
         this.game.dataConfigGame = dataConfigGame;
 
@@ -24,8 +24,6 @@ class Boot extends Phaser.State {
         else{
             this.game.deviceConfig = deviceConfig["mobile"];
         }
-
-        console.log(">>>>>>",this.game.device.desktop)
 
         this.game.state.start("Preload");
     }

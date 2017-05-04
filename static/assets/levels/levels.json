@@ -28,6 +28,10 @@
             "frame_width": 70,
             "frame_height": 90
         },
+        "team": {
+            "type": "image",
+            "source": "static/assets/imgs/game-title/team.png"
+        },
         "shadow": {
             "type": "spritesheet",
             "source": "static/assets/imgs/game-title/shadow.png",
@@ -50,7 +54,11 @@
         },
         "click": {
             "type": "audio",
-            "source": "static/assets/audio/menu/click.ogg"
+            "source": "static/assets/audio/general/click.ogg"
+        },
+        "swipe": {
+            "type": "audio",
+            "source": "static/assets/audio/general/swipe.ogg"
         },
         "green_button": {
             "type": "spritesheet",

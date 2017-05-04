@@ -1,8 +1,10 @@
 {
   "mobile": {
     "preload": {
-      "fontSize": 100,
-      "startTimeout": 2000
+      "fontSize": 140,
+      "startTimeout": 2000,
+      "teamScale": 2,
+      "textOffset" : 100
     },
     "menu": {
 
@@ -10,8 +12,10 @@
   },
   "desktop": {
     "preload": {
-      "fontSize": 64,
-      "startTimeout": 2000
+      "fontSize": 85,
+      "startTimeout": 2000,
+      "teamScale": 1,
+      "textOffset" : 50
     },
     "menu": {
 

@@ -11,8 +11,10 @@
 # Стек
 phaser, webpack, babel, cocoon.io
 # Запуск
-npm install;npm run dev;
-
+```
+npm install;
+npm run dev;
+```
 
 
 

@@ -5,7 +5,7 @@
 Клик - прыжок, даблклик - переключение гравитации.
 # Геймплей
 <p align="center">
-  <img src="https://github.com/nickbullock/gifster/example/gif">
+  <img src="https://github.com/nickbullock/gifster/raw/master/example.gif">
 </p>
 
 # Стек
